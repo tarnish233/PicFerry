@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+app_path=${PICFERRY_APP_PATH:-/Applications/PicFerry.app}
+executable="$app_path/Contents/MacOS/PicFerry"
+
+if [ ! -x "$executable" ]; then
+    echo "PicFerry executable not found at: $executable" >&2
+    exit 1
+fi
+
+export PICFERRY_CLI_NAME=picferry
+exec "$executable" "$@"
