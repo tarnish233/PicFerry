@@ -12,19 +12,30 @@ import SwiftUI
 final class PreferencesWindowController: NSWindowController {
 
     private let hostPreferencesModel: HostPreferencesModel
+    private let navigationModel: PreferencesNavigationModel
     private var allowsDiscardingHostChanges = false
 
     static func make() -> PreferencesWindowController {
-        PreferencesWindowController(hostPreferencesModel: HostPreferencesModel())
+        PreferencesWindowController(
+            hostPreferencesModel: HostPreferencesModel(),
+            navigationModel: PreferencesNavigationModel()
+        )
     }
 
-    private init(hostPreferencesModel: HostPreferencesModel) {
+    private init(
+        hostPreferencesModel: HostPreferencesModel,
+        navigationModel: PreferencesNavigationModel
+    ) {
         self.hostPreferencesModel = hostPreferencesModel
+        self.navigationModel = navigationModel
 
-        let rootView = ModernPreferencesView(hostModel: hostPreferencesModel)
+        let rootView = ModernPreferencesView(
+            hostModel: hostPreferencesModel,
+            navigationModel: navigationModel
+        )
         let hostingController = NSHostingController(rootView: rootView)
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 780, height: 520),
+            contentRect: NSRect(x: 0, y: 0, width: 1040, height: 680),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered,
             defer: false
@@ -37,6 +48,7 @@ final class PreferencesWindowController: NSWindowController {
 
     required init?(coder: NSCoder) {
         self.hostPreferencesModel = HostPreferencesModel()
+        self.navigationModel = PreferencesNavigationModel()
         super.init(coder: coder)
     }
 
@@ -45,6 +57,15 @@ final class PreferencesWindowController: NSWindowController {
             NSApp.setActivationPolicy(.regular)
         }
         super.showWindow(sender)
+    }
+
+    func show(_ destination: PreferencesDestination? = nil) {
+        if let destination {
+            navigationModel.selection = destination
+        }
+        showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        window?.makeKeyAndOrderFront(nil)
     }
 
     private func configure(_ window: NSWindow) {
@@ -57,12 +78,12 @@ final class PreferencesWindowController: NSWindowController {
         window.backgroundColor = .windowBackgroundColor
         window.isMovableByWindowBackground = true
         window.isReleasedWhenClosed = false
-        window.minSize = NSSize(width: 740, height: 480)
-        window.setContentSize(NSSize(width: 780, height: 520))
-        window.setFrameAutosaveName("PicFerry.PreferencesWindow.CompactV2")
+        window.minSize = NSSize(width: 720, height: 480)
+        window.setContentSize(NSSize(width: 1040, height: 680))
+        window.setFrameAutosaveName("PicFerry.PreferencesWindow.HostWorkspaceV3")
         window.delegate = self
 
-        if !window.setFrameUsingName("PicFerry.PreferencesWindow.CompactV2") {
+        if !window.setFrameUsingName("PicFerry.PreferencesWindow.HostWorkspaceV3") {
             window.center()
         }
 

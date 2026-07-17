@@ -107,12 +107,8 @@ struct HistoryView: View {
     @State private var model = HistoryViewModel()
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            Divider()
-            historyTable
-        }
-        .frame(minWidth: 760, minHeight: 480)
+        historyTable
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(nsColor: .windowBackgroundColor))
         .searchable(text: $model.searchText, prompt: "Search upload history".localized)
         .toolbar {
@@ -158,20 +154,6 @@ struct HistoryView: View {
                 model.reload()
             }
         }
-    }
-
-    private var header: some View {
-        HStack(alignment: .firstTextBaseline) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Upload History".localized)
-                    .font(.title2)
-                    .bold()
-                Text("\(model.displayedItems.count) \("items".localized)")
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-        }
-        .padding()
     }
 
     @ViewBuilder

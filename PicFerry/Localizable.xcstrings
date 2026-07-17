@@ -49,6 +49,54 @@
         }
       }
     },
+    "An authorized folder is available for command-line uploads.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选择授权目录，可供命令行上传使用。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已選擇授權目錄，可供命令列上傳使用。"
+          }
+        }
+      }
+    },
+    "Choose a folder only when command-line uploads need persistent access to files outside the sandbox.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅当命令行上传需要持续读取沙盒外文件时，才需要选择授权目录。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "僅當命令列上傳需要持續讀取沙盒外檔案時，才需要選擇授權目錄。"
+          }
+        }
+      }
+    },
+    "Choose Folder": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择目录"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇目錄"
+          }
+        }
+      }
+    },
     "Remove Host": {
       "localizations": {
         "zh-Hans": {
@@ -190,6 +238,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "檔名捲動"
+          }
+        }
+      }
+    },
+    "File Access": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件访问权限"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "檔案存取權限"
           }
         }
       }
@@ -386,6 +450,22 @@
         }
       }
     },
+    "Reauthorize": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新授权"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新授權"
+          }
+        }
+      }
+    },
     "Reset": {
       "localizations": {
         "zh-Hans": {
@@ -414,6 +494,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "重設設定"
+          }
+        }
+      }
+    },
+    "Resets keyboard shortcuts, output options, compression settings, and file access authorization.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复快捷键、输出选项、压缩设置和文件访问授权。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復快速鍵、輸出選項、壓縮設定和檔案存取授權。"
+          }
+        }
+      }
+    },
+    "Restore General Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复通用设置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復一般設定"
+          }
+        }
+      }
+    },
+    "Restore General Settings?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确认恢复通用设置？"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認恢復一般設定？"
+          }
+        }
+      }
+    },
+    "Restore Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确认恢复"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認恢復"
           }
         }
       }
@@ -542,6 +686,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "這將重設所有 PicFerry 設定和快速鍵。"
+          }
+        }
+      }
+    },
+    "This will reset keyboard shortcuts, output options, compression settings, and file access authorization. Image hosts, Tokens, and upload history will be kept. This action cannot be undone.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这将恢复快捷键、输出选项、压缩设置和文件访问授权。图床配置、Token 和上传历史会保留。此操作无法撤销。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這將恢復快速鍵、輸出選項、壓縮設定和檔案存取授權。圖床設定、Token 和上傳歷史會保留。此操作無法復原。"
           }
         }
       }
@@ -11077,6 +11237,34 @@
         }
       }
     },
+    "Image Hosts": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"图床"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"圖床"}}}},
+    "Manage image upload services. The default service is used for new uploads.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"管理图片上传服务，新上传将使用默认图床。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"管理圖片上傳服務，新上傳將使用預設圖床。"}}}},
+    "View token guide": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"查看 Token 教程"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"查看 Token 教學"}}}},
+    "Test configuration": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"测试配置"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"測試設定"}}}},
+    "Choose an Image Host": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"选择图床"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"選擇圖床"}}}},
+    "Add a built-in provider, then complete its configuration.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"添加内置图床，然后完成配置。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"新增內建圖床，然後完成設定。"}}}},
+    "Add an image host, then complete its configuration.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"添加图床，然后完成配置。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"新增圖床，然後完成設定。"}}}},
+    "Built-in": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"内置"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"內建"}}}},
+    "Add %@ image host": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"添加 %@ 图床"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"新增 %@ 圖床"}}}},
+    "Set as Default": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"设为默认"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"設為預設"}}}},
+    "Default": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"默认"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"預設"}}}},
+    "Default image host": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"默认图床"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"預設圖床"}}}},
+    "Built-in image host": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"内置图床"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"內建圖床"}}}},
+    "Image host name": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"图床名称"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"圖床名稱"}}}},
+    "Used to identify this configuration in the menu bar.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"用于在菜单栏中识别此配置。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"用於在選單列中識別此設定。"}}}},
+    "Before You Start": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"使用须知"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"使用須知"}}}},
+    "Configuration": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"配置"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"設定"}}}},
+    "The GitHub user or organization that owns the repository.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"拥有该仓库的 GitHub 用户或组织。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"擁有該儲存庫的 GitHub 使用者或組織。"}}}},
+    "The Gitee user or organization that owns the repository.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"拥有该仓库的 Gitee 用户或组织。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"擁有該儲存庫的 Gitee 使用者或組織。"}}}},
+    "A repository used to store uploaded images.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"用于保存上传图片的仓库。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"用於儲存上傳圖片的儲存庫。"}}}},
+    "The branch that receives uploaded files.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"接收上传文件的分支。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"接收上傳檔案的分支。"}}}},
+    "Stored securely in Keychain. Grant only the repository permissions PicFerry needs.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"Token 将安全存储在钥匙串中，请仅授予 PicFerry 所需的仓库权限。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"Token 將安全儲存在鑰匙圈中，請僅授予 PicFerry 所需的儲存庫權限。"}}}},
+    "Optional. Use a custom CDN or raw-file domain for generated links.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"可选。使用自定义 CDN 或原始文件域名生成链接。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"選填。使用自訂 CDN 或原始檔案網域產生連結。"}}}},
+    "Leave empty to use PicFerry/{filename}{.suffix}. Date and random variables are supported.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"留空将使用 PicFerry/{filename}{.suffix}，支持日期和随机变量。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"留空將使用 PicFerry/{filename}{.suffix}，支援日期和隨機變數。"}}}},
+    "Create a fine-grained GitHub token with access to the target repository and permission to write repository contents.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"请创建一个可访问目标仓库并具有仓库内容写入权限的细粒度 GitHub Token。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"請建立一個可存取目標儲存庫並具有儲存庫內容寫入權限的細粒度 GitHub Token。"}}}},
+    "Create a Gitee personal access token with permission to write files to the target repository.": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"请创建一个具有目标仓库文件写入权限的 Gitee 私人令牌。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"請建立一個具有目標儲存庫檔案寫入權限的 Gitee 私人權杖。"}}}},
+    "GitHub token": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"GitHub Token"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"GitHub Token"}}}},
+    "Gitee token": {"extractionState":"manual","localizations":{"zh-Hans":{"stringUnit":{"state":"translated","value":"Gitee Token"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"Gitee Token"}}}},
     "Source Code": {
       "extractionState": "manual",
       "localizations": {

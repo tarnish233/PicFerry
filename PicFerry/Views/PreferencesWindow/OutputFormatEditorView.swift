@@ -53,10 +53,15 @@ struct OutputFormatEditorView: View {
     @State private var model = OutputFormatEditorModel()
     @State private var showsSaveError = false
 
+    private var listHeight: CGFloat {
+        let visibleRowCount = min(max(model.items.count, 1), 6)
+        return CGFloat(visibleRowCount * 49)
+    }
+
     var body: some View {
         @Bindable var model = model
 
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Output Formats".localized)
@@ -74,27 +79,12 @@ struct OutputFormatEditorView: View {
             }
 
             VStack(spacing: 0) {
-                HStack(spacing: 12) {
-                    Text("Name".localized)
-                        .frame(width: 120, alignment: .leading)
-                    Text("Template".localized)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Color.clear.frame(width: 28)
-                }
-                .font(.caption)
-                .bold()
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-
-                Divider()
-
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach($model.items) { $item in
                             HStack(spacing: 12) {
                                 TextField("Name".localized, text: $item.name)
-                                    .frame(width: 120)
+                                    .frame(width: 126)
                                 TextField("{url}", text: $item.value)
                                     .font(.system(.body, design: .monospaced))
                                 Button("Remove".localized, systemImage: "trash", role: .destructive) {
@@ -105,14 +95,17 @@ struct OutputFormatEditorView: View {
                                 .frame(width: 28)
                             }
                             .padding(.horizontal, 14)
-                            .padding(.vertical, 9)
+                            .padding(.vertical, 8)
 
                             if item.id != model.items.last?.id {
                                 Divider().padding(.leading, 14)
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
                 }
+                .defaultScrollAnchor(.top)
+                .frame(height: listHeight)
             }
             .background(
                 Color(nsColor: .controlBackgroundColor).opacity(0.72),
@@ -136,7 +129,7 @@ struct OutputFormatEditorView: View {
             }
         }
         .padding(20)
-        .frame(width: 600, height: 400)
+        .frame(width: 560)
         .background(Color(nsColor: .windowBackgroundColor))
         .alert("Could not save output formats".localized, isPresented: $showsSaveError) {
         } message: {

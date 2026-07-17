@@ -21,7 +21,7 @@ PicFerry is a native macOS menu-bar uploader for GitHub and Gitee. It can upload
 
 ## Install
 
-Download `PicFerry-2.0.0-macos26-arm64.dmg` from Releases, open it, and drag `PicFerry.app` into the Applications folder.
+Download `PicFerry-2.0.1-macos26-arm64.dmg` from Releases, open it, and drag `PicFerry.app` into the Applications folder.
 
 Current test builds are locally signed. If macOS blocks the first launch, Control-click the app in Finder and choose **Open**.
 
@@ -85,7 +85,7 @@ Common options:
 - Product and executable: `PicFerry`
 - Bundle identifier: `com.tarnish233.PicFerry`
 - URL scheme: `picferry://`
-- Version: `2.0.0 (40)`
+- Version: `2.0.1 (41)`
 
 ## License and attribution
 

@@ -14,6 +14,7 @@ import SwiftUI
 enum PreferencesDestination: String, CaseIterable, Identifiable {
     case general
     case hosts
+    case history
     case about
 
     var id: String { rawValue }
@@ -24,6 +25,8 @@ enum PreferencesDestination: String, CaseIterable, Identifiable {
             return "General".localized
         case .hosts:
             return "Host".localized
+        case .history:
+            return "Upload History".localized
         case .about:
             return "About".localized
         }
@@ -35,6 +38,8 @@ enum PreferencesDestination: String, CaseIterable, Identifiable {
             return "gearshape"
         case .hosts:
             return "externaldrive"
+        case .history:
+            return "clock.arrow.circlepath"
         case .about:
             return "info.circle"
         }
@@ -42,17 +47,21 @@ enum PreferencesDestination: String, CaseIterable, Identifiable {
 }
 
 struct ModernPreferencesView: View {
-    @State private var selection = PreferencesDestination.general
+    @Bindable var navigationModel: PreferencesNavigationModel
     @State private var generalModel = GeneralPreferencesModel()
     private let hostModel: HostPreferencesModel
 
-    init(hostModel: HostPreferencesModel) {
+    init(
+        hostModel: HostPreferencesModel,
+        navigationModel: PreferencesNavigationModel
+    ) {
         self.hostModel = hostModel
+        self.navigationModel = navigationModel
     }
 
     var body: some View {
         NavigationSplitView {
-            List(PreferencesDestination.allCases, selection: $selection) { destination in
+            List(PreferencesDestination.allCases, selection: $navigationModel.selection) { destination in
                 Label(destination.title, systemImage: destination.symbolName)
                     .font(.body)
                     .padding(.vertical, 4)
@@ -68,16 +77,18 @@ struct ModernPreferencesView: View {
                 }
         }
         .navigationSplitViewStyle(.balanced)
-        .frame(minWidth: 740, minHeight: 480)
+        .frame(minWidth: 720, minHeight: 480)
     }
 
     @ViewBuilder
     private var detailView: some View {
-        switch selection {
+        switch navigationModel.selection {
         case .general:
             GeneralPreferencesView(model: generalModel)
         case .hosts:
             ModernHostPreferencesView(model: hostModel)
+        case .history:
+            HistoryView()
         case .about:
             AboutPreferencesView()
         }
@@ -90,7 +101,6 @@ private enum Metrics {
     static let pageHorizontalInset: CGFloat = 24
     static let pageTopInset: CGFloat = 24
     static let pageBottomInset: CGFloat = 28
-    static let contentMaxWidth: CGFloat = 640
 
     static let sectionSpacing: CGFloat = 22
     static let sectionHeaderSpacing: CGFloat = 8
@@ -125,7 +135,7 @@ private struct PreferencesPage<Content: View>: View {
 
                 content
             }
-            .frame(maxWidth: Metrics.contentMaxWidth, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, Metrics.pageHorizontalInset)
             .padding(.top, Metrics.pageTopInset)
             .padding(.bottom, Metrics.pageBottomInset)
@@ -214,32 +224,23 @@ private struct PreferencesDivider: View {
 @MainActor
 @Observable
 private final class GeneralPreferencesModel {
-    var hasFullDiskAccess = false
+    var hasFileAccessAuthorization = false
 
     init() {
         reload()
     }
 
     func reload() {
-        refreshFullDiskAccess()
+        refreshFileAccessAuthorization()
     }
 
-    func refreshFullDiskAccess() {
-        hasFullDiskAccess = DiskPermissionManager.shared.checkFullDiskAuthorizationStatus()
+    func refreshFileAccessAuthorization() {
+        hasFileAccessAuthorization = DiskPermissionManager.shared.checkDirectoryAuthorizationStatus()
     }
 
-    func manageFullDiskAccess() {
-        if hasFullDiskAccess,
-           let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") {
-            NSWorkspace.shared.open(url)
-        } else {
-            DiskPermissionManager.shared.requestFullDiskPermissions()
-            Task { [weak self] in
-                try? await Task.sleep(for: .milliseconds(800))
-                guard !Task.isCancelled else { return }
-                self?.refreshFullDiskAccess()
-            }
-        }
+    func chooseFileAccessFolder() {
+        DiskPermissionManager.shared.requestHomeDirectoryPermissions()
+        refreshFileAccessAuthorization()
     }
 
     func resetAllPreferences() {
@@ -290,50 +291,42 @@ private struct GeneralPreferencesView: View {
                         showsOutputFormatEditor = true
                     }
                 }
-                PreferencesDivider()
-                PreferencesRow(
-                    "Screenshot upload".localized,
-                    detail: "Uses the built-in macOS screenshot tool.".localized
-                ) {
-                    Label("macOS", systemImage: "camera.viewfinder")
-                        .foregroundStyle(.secondary)
-                }
             }
 
             PreferencesSection("Permissions".localized) {
                 PreferencesRow(
-                    "Full Disk Access".localized,
-                    detail: model.hasFullDiskAccess
-                        ? "Authorized".localized
-                        : "Required for reading files outside the sandbox.".localized
+                    "File Access".localized,
+                    detail: model.hasFileAccessAuthorization
+                        ? "An authorized folder is available for command-line uploads.".localized
+                        : "Choose a folder only when command-line uploads need persistent access to files outside the sandbox.".localized
                 ) {
                     Button(
-                        model.hasFullDiskAccess ? "Manage Permission".localized : "Grant Permission".localized,
-                        action: model.manageFullDiskAccess
+                        model.hasFileAccessAuthorization ? "Reauthorize".localized : "Choose Folder".localized,
+                        action: model.chooseFileAccessFolder
                     )
                 }
             }
 
             PreferencesSection("Reset".localized) {
                 PreferencesRow(
-                    "Reset preferences".localized,
-                    detail: "This resets all PicFerry preferences and keyboard shortcuts.".localized
+                    "Restore General Settings".localized,
+                    detail: "Resets keyboard shortcuts, output options, compression settings, and file access authorization.".localized
                 ) {
-                    Button("Reset preferences".localized, role: .destructive) {
+                    Button("Restore General Settings".localized, role: .destructive) {
                         showsResetConfirmation = true
                     }
                 }
             }
         }
-        .onAppear(perform: model.refreshFullDiskAccess)
+        .onAppear(perform: model.refreshFileAccessAuthorization)
         .sheet(isPresented: $showsOutputFormatEditor) {
             OutputFormatEditorView()
         }
-        .alert("Reset User Preferences?".localized, isPresented: $showsResetConfirmation) {
+        .alert("Restore General Settings?".localized, isPresented: $showsResetConfirmation) {
             Button("Cancel".localized, role: .cancel) {}
-            Button("Reset".localized, role: .destructive, action: model.resetAllPreferences)
+            Button("Restore Settings".localized, role: .destructive, action: model.resetAllPreferences)
         } message: {
-            Text("⚠️ Note that this will reset all user preferences".localized)
+            Text("This will reset keyboard shortcuts, output options, compression settings, and file access authorization. Image hosts, Tokens, and upload history will be kept. This action cannot be undone.".localized)
         }
     }
 }

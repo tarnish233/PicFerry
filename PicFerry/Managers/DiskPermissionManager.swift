@@ -281,6 +281,20 @@ public final class DiskPermissionManager {
 
 // Utils
 extension DiskPermissionManager {
+
+    /// 检查应用是否保存了仍可解析的目录访问授权。
+    /// 这属于 security-scoped bookmark，不是系统的“完全磁盘访问”权限。
+    func checkDirectoryAuthorizationStatus() -> Bool {
+        if checkFullDiskAuthorizationStatus() {
+            return true
+        }
+
+        guard let data = Defaults[.homeDirectoryBookmark] else {
+            return false
+        }
+
+        return restoreFileAccess(with: data, defaultKey: .homeDirectoryBookmark) != nil
+    }
     
     /// 检查完全磁盘访问权限状态
     /// - Returns: 是否已授权完全磁盘访问权限
@@ -333,11 +347,18 @@ extension DiskPermissionManager {
     private func requestDirectoryPermissions(defaultDirectory: String) {
         let logPrefix = defaultDirectory == "/" ? "根目录" : "主目录"
         Logger.shared.verbose("开始授权\(logPrefix)权限")
+
+        let directoryURL = defaultDirectory == "~/"
+            ? FileManager.default.homeDirectoryForCurrentUser
+            : URL(fileURLWithPath: defaultDirectory, isDirectory: true)
         
-        guard let url = self.promptForWorkingDirectoryPermission(for: URL(fileURLWithPath: defaultDirectory, isDirectory: true)) else {
+        guard let url = self.promptForWorkingDirectoryPermission(for: directoryURL) else {
             Logger.shared.verbose("授权\(logPrefix)权限失败")
             return
         }
+
+        // 新选择会替换旧授权，避免重新授权后仍保留范围更大的旧书签。
+        clearStoredDirectoryAuthorizations()
         
         // 检查用户实际选择的路径
         if url.path == "/" {
@@ -392,19 +413,17 @@ extension DiskPermissionManager {
     }
     
     func cancelFullDiskPermissions() {
-        Logger.shared.verbose("取消授权根目录权限")
-        
-        // 清除传统的根目录 bookmark
+        Logger.shared.verbose("取消目录访问授权")
+        clearStoredDirectoryAuthorizations()
+        Logger.shared.verbose("取消目录访问授权成功")
+    }
+
+    private func clearStoredDirectoryAuthorizations() {
+        stopDirectoryAccessing()
         Defaults[.rootDirectoryBookmark] = nil
-        
-        // 清除临时解决方案的子目录 bookmarks
+        Defaults[.homeDirectoryBookmark] = nil
         Defaults[.rootSubdirectoryBookmarks] = nil
         Defaults[.rootSubdirectoryNames] = nil
-        
-        // 停止当前的访问
-        stopDirectoryAccessing()
-        
-        Logger.shared.verbose("取消根目录权限成功")
     }
     
     // 获取安全授权，根目录授权优先获取，无根目录书签时获取主目录书签

@@ -36,10 +36,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         PreferencesWindowController.make()
     }()
     
-    lazy var databaseWindowController: DatabaseWindowController = {
-        DatabaseWindowController.make()
-    }()
-
     lazy var screenshotHelpWindowController: ScreenshotAuthorizationHelpWindowController = {
         ScreenshotAuthorizationHelpWindowController.make()
     }()
@@ -81,7 +77,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // 检查是否可以从子目录方案升级到根目录方案
         DiskPermissionManager.shared.tryUpgradeToRootDirectoryPermission()
-        
+
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -483,9 +479,9 @@ extension AppDelegate {
         // 开始磁盘授权访问
         _ = DiskPermissionManager.shared.startDirectoryAccessing()
         
-        // 检查磁盘访问权限
-        if !DiskPermissionManager.shared.checkFullDiskAuthorizationStatus() {
-            Logger.shared.warn("没有完全磁盘访问权限，可能影响文件上传")
+        // 检查是否保存了用于命令行等外部文件来源的目录授权。
+        if !DiskPermissionManager.shared.checkDirectoryAuthorizationStatus() {
+            Logger.shared.warn("未找到目录访问授权；沙盒外文件可能无法通过命令行上传")
         }
         
         self.uploading = true

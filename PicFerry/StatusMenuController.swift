@@ -291,15 +291,11 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @objc private func openUploadHistory() {
-        appDelegate.databaseWindowController.showWindow(nil)
-        NSApp.activate(ignoringOtherApps: true)
-        appDelegate.databaseWindowController.window?.makeKeyAndOrderFront(nil)
+        appDelegate.preferencesWindowController.show(.history)
     }
 
     @objc private func openPreferences() {
-        appDelegate.preferencesWindowController.showWindow(nil)
-        NSApp.activate(ignoringOtherApps: true)
-        appDelegate.preferencesWindowController.window?.makeKeyAndOrderFront(nil)
+        appDelegate.preferencesWindowController.show()
     }
 
     @objc private func quit() {

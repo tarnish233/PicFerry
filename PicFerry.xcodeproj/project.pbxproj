@@ -12,6 +12,14 @@
 		F10000012F00000000000001 /* ModernPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000022F00000000000001 /* ModernPreferencesView.swift */; };
 		F10000032F00000000000001 /* ModernHostPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000042F00000000000001 /* ModernHostPreferencesView.swift */; };
 		F10000052F00000000000001 /* OutputFormatEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000062F00000000000001 /* OutputFormatEditorView.swift */; };
+		F30000012F00000000000001 /* HostPreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000022F00000000000001 /* HostPreferencesModel.swift */; };
+		F30000032F00000000000001 /* HostPreferencesMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000042F00000000000001 /* HostPreferencesMetrics.swift */; };
+		F30000052F00000000000001 /* HostSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000062F00000000000001 /* HostSidebarView.swift */; };
+		F30000072F00000000000001 /* HostProviderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000082F00000000000001 /* HostProviderPickerView.swift */; };
+		F30000092F00000000000001 /* HostEditorDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000A2F00000000000001 /* HostEditorDraft.swift */; };
+		F300000B2F00000000000001 /* HostConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000C2F00000000000001 /* HostConfigurationField.swift */; };
+		F300000D2F00000000000001 /* HostConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000E2F00000000000001 /* HostConfigurationView.swift */; };
+		F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000102F00000000000001 /* PreferencesNavigationModel.swift */; };
 		F20000012F00000000000001 /* HostCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000022F00000000000001 /* HostCredentialStore.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
@@ -70,7 +78,6 @@
 		966BF3592E89402400BE9EC7 /* PasteboardType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BF3582E89402400BE9EC7 /* PasteboardType+Extension.swift */; };
 		96767C02266C8AEB00867727 /* PicFerry.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96767C01266C8AEB00867727 /* PicFerry.sdef */; };
 		96767C09266CABC800867727 /* AppleScriptCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96767C08266CABC800867727 /* AppleScriptCommand.swift */; };
-		96F633EE25AEBE5E005514EB /* DatabaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */; };
 		96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633F525AEC3C6005514EB /* DatabaseViewController.swift */; };
 		96FD4E122E89139F001D2E32 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 96FD4E112E89139F001D2E32 /* KeyboardShortcuts */; };
 		96FD4E142E89147A001D2E32 /* KeyboardShortcuts+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD4E132E89147A001D2E32 /* KeyboardShortcuts+Name.swift */; };
@@ -100,6 +107,14 @@
 		F10000022F00000000000001 /* ModernPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernPreferencesView.swift; sourceTree = "<group>"; };
 		F10000042F00000000000001 /* ModernHostPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHostPreferencesView.swift; sourceTree = "<group>"; };
 		F10000062F00000000000001 /* OutputFormatEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFormatEditorView.swift; sourceTree = "<group>"; };
+		F30000022F00000000000001 /* HostPreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesModel.swift; sourceTree = "<group>"; };
+		F30000042F00000000000001 /* HostPreferencesMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesMetrics.swift; sourceTree = "<group>"; };
+		F30000062F00000000000001 /* HostSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSidebarView.swift; sourceTree = "<group>"; };
+		F30000082F00000000000001 /* HostProviderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProviderPickerView.swift; sourceTree = "<group>"; };
+		F300000A2F00000000000001 /* HostEditorDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEditorDraft.swift; sourceTree = "<group>"; };
+		F300000C2F00000000000001 /* HostConfigurationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfigurationField.swift; sourceTree = "<group>"; };
+		F300000E2F00000000000001 /* HostConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfigurationView.swift; sourceTree = "<group>"; };
+		F30000102F00000000000001 /* PreferencesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNavigationModel.swift; sourceTree = "<group>"; };
 		F20000022F00000000000001 /* HostCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCredentialStore.swift; sourceTree = "<group>"; };
 		F20000162F00000000000001 /* libminipng-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libminipng-arm64.a"; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -162,7 +177,6 @@
 		96767C01266C8AEB00867727 /* PicFerry.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PicFerry.sdef; sourceTree = "<group>"; };
 		96767C08266CABC800867727 /* AppleScriptCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptCommand.swift; sourceTree = "<group>"; };
 		96B6C3F725AD89F200B1A584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWindowController.swift; sourceTree = "<group>"; };
 		96F633F525AEC3C6005514EB /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
 		96FD4E132E89147A001D2E32 /* KeyboardShortcuts+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Name.swift"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_PicFerry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicFerry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +207,14 @@
 				16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */,
 				F10000022F00000000000001 /* ModernPreferencesView.swift */,
 				F10000042F00000000000001 /* ModernHostPreferencesView.swift */,
+				F30000022F00000000000001 /* HostPreferencesModel.swift */,
+				F30000042F00000000000001 /* HostPreferencesMetrics.swift */,
+				F30000062F00000000000001 /* HostSidebarView.swift */,
+				F30000082F00000000000001 /* HostProviderPickerView.swift */,
+				F300000A2F00000000000001 /* HostEditorDraft.swift */,
+				F300000C2F00000000000001 /* HostConfigurationField.swift */,
+				F300000E2F00000000000001 /* HostConfigurationView.swift */,
+				F30000102F00000000000001 /* PreferencesNavigationModel.swift */,
 				F10000062F00000000000001 /* OutputFormatEditorView.swift */,
 			);
 			path = PreferencesWindow;
@@ -429,7 +451,6 @@
 		96F633EC25AEBE10005514EB /* DatabaseWindow */ = {
 			isa = PBXGroup;
 			children = (
-				96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */,
 				96F633F525AEC3C6005514EB /* DatabaseViewController.swift */,
 			);
 			path = DatabaseWindow;
@@ -560,6 +581,14 @@
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
 				F10000012F00000000000001 /* ModernPreferencesView.swift in Sources */,
 				F10000032F00000000000001 /* ModernHostPreferencesView.swift in Sources */,
+				F30000012F00000000000001 /* HostPreferencesModel.swift in Sources */,
+				F30000032F00000000000001 /* HostPreferencesMetrics.swift in Sources */,
+				F30000052F00000000000001 /* HostSidebarView.swift in Sources */,
+				F30000072F00000000000001 /* HostProviderPickerView.swift in Sources */,
+				F30000092F00000000000001 /* HostEditorDraft.swift in Sources */,
+				F300000B2F00000000000001 /* HostConfigurationField.swift in Sources */,
+				F300000D2F00000000000001 /* HostConfigurationView.swift in Sources */,
+				F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */,
 				F10000052F00000000000001 /* OutputFormatEditorView.swift in Sources */,
 				F20000012F00000000000001 /* HostCredentialStore.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
@@ -609,7 +638,6 @@
 				16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */,
-				96F633EE25AEBE5E005514EB /* DatabaseWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,7 +804,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -795,7 +823,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",
@@ -823,7 +851,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -842,7 +870,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",
