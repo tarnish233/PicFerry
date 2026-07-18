@@ -13,8 +13,8 @@ final class NotificationExt: NSObject, @unchecked Sendable {
     
     static let shared = NotificationExt()
     
-    func post(title: String, info: String, subtitle: String? = nil) -> Void {
-        self.postByNew(title: title, info: info, subtitle: subtitle)
+    func post(title: String, info: String, subtitle: String? = nil, openURL: URL? = nil) -> Void {
+        self.postByNew(title: title, info: info, subtitle: subtitle, openURL: openURL)
     }
     
     func postUploadErrorNotice(_ body: String? = "") {
@@ -71,10 +71,19 @@ final class NotificationExt: NSObject, @unchecked Sendable {
     func postAppIsAlreadyRunningNotice() {
         self.post(title: "PicFerry", info: "App is already running".localized)
     }
+
+    func postUpdateAvailableNotice(_ release: AppRelease) {
+        self.post(
+            title: String(format: "A new version (%@) is available.".localized, release.tagName),
+            info: release.releaseNotes ?? "A new version of PicFerry is available for download.".localized,
+            subtitle: "Click to download the update.".localized,
+            openURL: release.htmlURL
+        )
+    }
 }
 
 extension NotificationExt: UNUserNotificationCenterDelegate {
-    func postByNew(title: String, info: String, subtitle: String? = nil) -> Void {
+    func postByNew(title: String, info: String, subtitle: String? = nil, openURL: URL? = nil) -> Void {
         let content = UNMutableNotificationContent()
         content.title = title
         if let subtitle = subtitle {
@@ -82,7 +91,11 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
         }
         content.body = info
         content.sound = UNNotificationSound.default
-        content.userInfo = ["body": info]
+        var userInfo: [String: Any] = ["body": info]
+        if let openURL = openURL {
+            userInfo["openURL"] = openURL.absoluteString
+        }
+        content.userInfo = userInfo
         
         let request = UNNotificationRequest(identifier: "PICFERRY_REQUEST_\(String.randomStr(len: 5))",
                                             content: content,
@@ -102,7 +115,15 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
     // 用户点击弹窗后的回调
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        
+
+        // 若通知携带链接（例如可用更新），点击后在浏览器中打开
+        if let urlString = userInfo["openURL"] as? String,
+           let url = URL(string: urlString) {
+            NSWorkspace.shared.open(url)
+            completionHandler()
+            return
+        }
+
         if let body = userInfo["body"] as? String {
             NSPasteboard.general.clearContents()
             NSPasteboard.general.declareTypes([.string], owner: nil)

@@ -17,6 +17,8 @@ struct Keys {
     static let historyList = "PicFerry_HistoryList_New"
     static let historyLimit = "PicFerry_HistoryLimit_New"
     static let compressFactor = "PicFerry_CompressFactor"
+    static let lastUpdateCheck = "PicFerry_LastUpdateCheck"
+    static let lastNotifiedVersion = "PicFerry_LastNotifiedVersion"
     static let rootDirectoryBookmark = "PicFerry_RootDirectoryBookmark"
     static let homeDirectoryBookmark = "PicFerry_HomeDirectoryBookmark"
     static let rootSubdirectoryBookmarks = "PicFerry_RootSubdirectoryBookmarks"
@@ -50,6 +52,10 @@ extension DefaultsKeys {
     static let outputFormatEncoded = DefaultsKey<Bool>(Keys.outputFormatEncoded)
     static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
+    // 上次自动检查更新的时间（timeIntervalSince1970）
+    static let lastUpdateCheck = DefaultsKey<Double>(Keys.lastUpdateCheck)
+    // 上次已通过通知提醒过的可用版本号（避免同一版本每天重复提醒）
+    static let lastNotifiedVersion = DefaultsKey<String>(Keys.lastNotifiedVersion)
     // 根目录授权书签
     static let rootDirectoryBookmark = DefaultsKey<Data>(Keys.rootDirectoryBookmark)
     // 主目录授权书签

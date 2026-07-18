@@ -78,6 +78,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // 检查是否可以从子目录方案升级到根目录方案
         DiskPermissionManager.shared.tryUpgradeToRootDirectoryPermission()
 
+        // 每天最多一次的后台静默检查更新（仅 GUI 模式）
+        if statusItem != nil {
+            Task { @MainActor in
+                await UpdateChecker.shared.checkForUpdatesInBackgroundIfNeeded()
+            }
+        }
+
     }
 
     func applicationWillTerminate(_ notification: Notification) {

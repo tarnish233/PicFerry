@@ -333,7 +333,46 @@ private struct GeneralPreferencesView: View {
 
 // MARK: - About
 
+@MainActor
+@Observable
+private final class AboutUpdateModel {
+    enum State {
+        case idle
+        case checking
+        case upToDate
+        case available(AppRelease)
+        case failed(String)
+    }
+
+    private(set) var state: State = .idle
+
+    func checkForUpdates() {
+        guard !isChecking else { return }
+        state = .checking
+        Task {
+            do {
+                let result = try await UpdateChecker.shared.checkForUpdates()
+                switch result {
+                case .upToDate:
+                    state = .upToDate
+                case .updateAvailable(let release):
+                    state = .available(release)
+                }
+            } catch {
+                state = .failed(error.localizedDescription)
+            }
+        }
+    }
+
+    private var isChecking: Bool {
+        if case .checking = state { return true }
+        return false
+    }
+}
+
 private struct AboutPreferencesView: View {
+    @State private var updateModel = AboutUpdateModel()
+
     private var copyright: String {
         Bundle.main.infoDictionary?["NSHumanReadableCopyright"] as? String
             ?? "Copyright © 2021 Svend Jin. All rights reserved."
@@ -360,6 +399,8 @@ private struct AboutPreferencesView: View {
                         .foregroundStyle(.secondary)
                 }
 
+                updateControl
+
                 Label("Powered by Codex", systemImage: "sparkles")
                     .font(.callout)
                     .foregroundStyle(.secondary)
@@ -380,5 +421,64 @@ private struct AboutPreferencesView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, Metrics.pageHorizontalInset)
         .background(Color(nsColor: .windowBackgroundColor))
+    }
+
+    @ViewBuilder
+    private var updateControl: some View {
+        switch updateModel.state {
+        case .idle:
+            Button("Check for Updates".localized) {
+                updateModel.checkForUpdates()
+            }
+            .padding(.top, 6)
+
+        case .checking:
+            HStack(spacing: 8) {
+                ProgressView()
+                    .controlSize(.small)
+                Text("Checking for updates…".localized)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.top, 6)
+
+        case .upToDate:
+            HStack(spacing: 6) {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                    .accessibilityHidden(true)
+                Text("You're up to date.".localized)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.top, 6)
+
+        case .available(let release):
+            VStack(spacing: 8) {
+                Text(String(format: "A new version (%@) is available.".localized, release.tagName))
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                Button("Download Update".localized) {
+                    NSWorkspace.shared.open(release.htmlURL)
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding(.top, 6)
+
+        case .failed(let message):
+            VStack(spacing: 6) {
+                Text("Could not check for updates.".localized)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                Text(message)
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+                    .multilineTextAlignment(.center)
+                Button("Try Again".localized) {
+                    updateModel.checkForUpdates()
+                }
+            }
+            .padding(.top, 6)
+        }
     }
 }

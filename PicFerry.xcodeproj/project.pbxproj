@@ -21,6 +21,7 @@
 		F300000D2F00000000000001 /* HostConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000E2F00000000000001 /* HostConfigurationView.swift */; };
 		F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000102F00000000000001 /* PreferencesNavigationModel.swift */; };
 		F20000012F00000000000001 /* HostCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000022F00000000000001 /* HostCredentialStore.swift */; };
+		F20000102F00000000000001 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000112F00000000000001 /* UpdateChecker.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
 		16181F402CCF43310040D761 /* WCDBSwiftDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -116,6 +117,7 @@
 		F300000E2F00000000000001 /* HostConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfigurationView.swift; sourceTree = "<group>"; };
 		F30000102F00000000000001 /* PreferencesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNavigationModel.swift; sourceTree = "<group>"; };
 		F20000022F00000000000001 /* HostCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCredentialStore.swift; sourceTree = "<group>"; };
+		F20000112F00000000000001 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 		F20000162F00000000000001 /* libminipng-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libminipng-arm64.a"; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				F20000022F00000000000001 /* HostCredentialStore.swift */,
+				F20000112F00000000000001 /* UpdateChecker.swift */,
 				1629470A25B672CF00CCB3C8 /* DiskPermissionManager.swift */,
 				16EA205B22AF8FB90006FB9C /* ConfigManager.swift */,
 				161ABBDC23B1F1EB00805C5B /* DBManager.swift */,
@@ -591,6 +594,7 @@
 				F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */,
 				F10000052F00000000000001 /* OutputFormatEditorView.swift in Sources */,
 				F20000012F00000000000001 /* HostCredentialStore.swift in Sources */,
+				F20000102F00000000000001 /* UpdateChecker.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
 				161ABBDD23B1F1EB00805C5B /* DBManager.swift in Sources */,
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
@@ -823,7 +827,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",
@@ -870,7 +874,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",

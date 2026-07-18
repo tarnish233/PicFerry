@@ -24,6 +24,9 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
     private let outputFormatEncodedMenuItem = NSMenuItem()
     private let compressFactorMenuItem = NSMenuItem()
 
+    // 防止重复触发“检查更新”导致并发请求与叠加弹窗
+    private var isCheckingForUpdates = false
+
     init(appDelegate: AppDelegate) {
         self.appDelegate = appDelegate
         super.init()
@@ -108,6 +111,12 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
                 title: "Preferences".localized,
                 action: #selector(openPreferences),
                 keyEquivalent: ","
+            )
+        )
+        menu.addItem(
+            makeMenuItem(
+                title: "Check for Updates…".localized,
+                action: #selector(checkForUpdates)
             )
         )
 
@@ -296,6 +305,52 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
 
     @objc private func openPreferences() {
         appDelegate.preferencesWindowController.show()
+    }
+
+    @objc private func checkForUpdates() {
+        guard !isCheckingForUpdates else { return }
+        isCheckingForUpdates = true
+        Task { @MainActor in
+            defer { isCheckingForUpdates = false }
+            do {
+                let result = try await UpdateChecker.shared.checkForUpdates()
+                switch result {
+                case .upToDate(let current):
+                    presentUpdateAlert(
+                        title: "You're up to date.".localized,
+                        message: String(format: "PicFerry %@ is the latest version.".localized, current)
+                    )
+                case .updateAvailable(let release):
+                    presentUpdateAvailableAlert(release)
+                }
+            } catch {
+                presentUpdateAlert(
+                    title: "Could not check for updates.".localized,
+                    message: error.localizedDescription
+                )
+            }
+        }
+    }
+
+    private func presentUpdateAlert(title: String, message: String) {
+        NSApp.activate(ignoringOtherApps: true)
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = message
+        alert.addButton(withTitle: "OK".localized)
+        alert.runModal()
+    }
+
+    private func presentUpdateAvailableAlert(_ release: AppRelease) {
+        NSApp.activate(ignoringOtherApps: true)
+        let alert = NSAlert()
+        alert.messageText = String(format: "A new version (%@) is available.".localized, release.tagName)
+        alert.informativeText = release.releaseNotes ?? "A new version of PicFerry is available for download.".localized
+        alert.addButton(withTitle: "Download Update".localized)
+        alert.addButton(withTitle: "Cancel".localized)
+        if alert.runModal() == .alertFirstButtonReturn {
+            NSWorkspace.shared.open(release.htmlURL)
+        }
     }
 
     @objc private func quit() {
