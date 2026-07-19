@@ -29,7 +29,7 @@ Current test builds are locally signed. If macOS blocks the first launch, Contro
 
 ```bash
 xcodebuild build \
-  -project PicFerry.xcodeproj \
+  -project GitPic.xcodeproj \
   -scheme 'GitPic(Release)' \
   -configuration Debug \
   CODE_SIGNING_ALLOWED=NO

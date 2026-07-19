@@ -18,7 +18,7 @@
                BlueprintIdentifier = "16A6DC5322AA375700813706"
                BuildableName = "GitPic.app"
                BlueprintName = "GitPic"
-               ReferencedContainer = "container:PicFerry.xcodeproj">
+               ReferencedContainer = "container:GitPic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,6 +34,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = "zh-Hans"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +48,7 @@
             BlueprintIdentifier = "16A6DC5322AA375700813706"
             BuildableName = "GitPic.app"
             BlueprintName = "GitPic"
-            ReferencedContainer = "container:PicFerry.xcodeproj">
+            ReferencedContainer = "container:GitPic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +65,7 @@
             BlueprintIdentifier = "16A6DC5322AA375700813706"
             BuildableName = "GitPic.app"
             BlueprintName = "GitPic"
-            ReferencedContainer = "container:PicFerry.xcodeproj">
+            ReferencedContainer = "container:GitPic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

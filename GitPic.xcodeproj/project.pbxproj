@@ -189,7 +189,6 @@
 		96B6C3F725AD89F200B1A584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96F633F525AEC3C6005514EB /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
 		96FD4E132E89147A001D2E32 /* KeyboardShortcuts+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Name.swift"; sourceTree = "<group>"; };
-		A116EF79D38D9092D34EFCF5 /* Pods_PicFerry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicFerry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,7 +376,7 @@
 				16ADBE5E22D1D74D00E6C605 /* Views */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
 			);
-			path = PicFerry;
+			path = GitPic;
 			sourceTree = "<group>";
 		};
 		16A6DC6822AA3AD900813706 /* Supporting Files */ = {
@@ -467,7 +466,6 @@
 			isa = PBXGroup;
 			children = (
 				1626E8C622AAB6B1006DCF0F /* Alamofire.framework */,
-				A116EF79D38D9092D34EFCF5 /* Pods_PicFerry.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -804,7 +802,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/GitPicDebug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "GitPic/Supporting Files/GitPicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -821,7 +819,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/PicFerry/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GitPic/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -838,7 +836,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/GitPic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "GitPic/GitPic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -851,7 +849,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/GitPic.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "GitPic/Supporting Files/GitPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -868,7 +866,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/PicFerry/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GitPic/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -885,7 +883,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/GitPic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "GitPic/GitPic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

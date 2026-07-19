@@ -10,11 +10,11 @@ GitPic is a native macOS **menu-bar image/file uploader** for GitHub image hosti
 
 ```bash
 # Command-line debug build (no signing identity needed)
-xcodebuild build -project PicFerry.xcodeproj -scheme 'GitPic(Release)' \
+xcodebuild build -project GitPic.xcodeproj -scheme 'GitPic(Release)' \
   -configuration Debug CODE_SIGNING_ALLOWED=NO
 
 # Resolve SPM dependencies pinned in Package.resolved
-xcodebuild -resolvePackageDependencies -project PicFerry.xcodeproj
+xcodebuild -resolvePackageDependencies -project GitPic.xcodeproj
 ```
 
 - There is **no XCTest target**. Verification = it compiles, plus manual exercise of the affected path (upload, clipboard output, preferences persistence, CLI, URL scheme, localized UI). Run from Xcode for menu-bar/permissions debugging.
@@ -53,5 +53,5 @@ Alamofire (networking), SwiftyJSON, WCDB (encrypted SQLite), KeyboardShortcuts (
 - Swift: 4-space indent, braces on the declaration line, `// MARK: -` section separators. `UpperCamelCase` types/filenames, `lowerCamelCase` members. No formatter/linter is configured.
 - Keep provider-specific behavior inside `Models/<Provider>/`.
 - Bilingual comments (Chinese + English) are common and expected; mirror the local style.
-- Localization lives in `.xcstrings` catalogs (`Localizable.xcstrings`, `mul.lproj/Main.xcstrings`) and `Base.lproj`. Strings are accessed via `.localized` / `NSLocalizedString`; `PicFerry/Script/AutoGenStrings.py` assists generation.
+- Localization lives in `.xcstrings` catalogs (`Localizable.xcstrings`, `mul.lproj/Main.xcstrings`) and `Base.lproj`. Strings are accessed via `.localized` / `NSLocalizedString`; `GitPic/Script/AutoGenStrings.py` assists generation.
 - `AGENTS.md` has additional contributor/process guidance; `CONTRIBUTING.md` asks that substantial changes be discussed via issue first.
