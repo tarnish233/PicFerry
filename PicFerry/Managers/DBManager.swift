@@ -1,6 +1,6 @@
 //
 //  DBManager.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/12/24.
 //  Copyright © 2019 Svend Jin. All rights reserved.

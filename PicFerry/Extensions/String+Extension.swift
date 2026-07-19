@@ -1,6 +1,6 @@
 //
 //  String+Extension.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/16.
 //  Copyright © 2019 Svend Jin. All rights reserved.

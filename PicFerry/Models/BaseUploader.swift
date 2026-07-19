@@ -1,6 +1,6 @@
 //
 //  BaseUploader.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/10.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -132,8 +132,6 @@ class BaseUploader: @unchecked Sendable {
         switch host.type {
         case .github:
             GithubUploader.shared.upload(url, host: host)
-        case .gitee:
-            GiteeUploader.shared.upload(url, host: host)
         }
     }
 
@@ -162,8 +160,6 @@ class BaseUploader: @unchecked Sendable {
         switch host.type {
         case .github:
             GithubUploader.shared.upload(data, host: host)
-        case .gitee:
-            GiteeUploader.shared.upload(data, host: host)
         }
     }
 
@@ -180,8 +176,6 @@ class BaseUploader: @unchecked Sendable {
         switch host.type {
         case .github:
             return GithubUploader.fileExtensions
-        case .gitee:
-            return GiteeUploader.fileExtensions
         }
     }
 

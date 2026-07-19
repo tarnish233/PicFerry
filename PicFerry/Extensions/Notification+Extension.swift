@@ -1,6 +1,6 @@
 //
 //  NotificationExt.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/8/16.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -69,13 +69,13 @@ final class NotificationExt: NSObject, @unchecked Sendable {
     }
     
     func postAppIsAlreadyRunningNotice() {
-        self.post(title: "PicFerry", info: "App is already running".localized)
+        self.post(title: "GitPic", info: "App is already running".localized)
     }
 
     func postUpdateAvailableNotice(_ release: AppRelease) {
         self.post(
             title: String(format: "A new version (%@) is available.".localized, release.tagName),
-            info: release.releaseNotes ?? "A new version of PicFerry is available for download.".localized,
+            info: release.releaseNotes ?? "A new version of GitPic is available for download.".localized,
             subtitle: "Click to download the update.".localized,
             openURL: release.htmlURL
         )
@@ -97,7 +97,7 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
         }
         content.userInfo = userInfo
         
-        let request = UNNotificationRequest(identifier: "PICFERRY_REQUEST_\(String.randomStr(len: 5))",
+        let request = UNNotificationRequest(identifier: "GITPIC_REQUEST_\(String.randomStr(len: 5))",
                                             content: content,
                                             trigger: nil)
         

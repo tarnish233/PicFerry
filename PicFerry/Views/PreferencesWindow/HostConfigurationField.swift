@@ -1,6 +1,6 @@
 //
 //  HostConfigurationField.swift
-//  PicFerry
+//  GitPic
 //
 
 import SwiftUI
@@ -21,20 +21,31 @@ struct HostConfigurationField<Control: View>: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: HostPreferencesMetrics.fieldSpacing) {
-            Text(title)
-                .font(.headline)
+        HStack(alignment: .top, spacing: HostPreferencesMetrics.fieldColumnSpacing) {
+            VStack(alignment: .leading, spacing: HostPreferencesMetrics.fieldSpacing) {
+                Text(title)
+                    .font(.headline)
+
+                if let detail {
+                    Text(detail)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .frame(width: HostPreferencesMetrics.fieldLabelWidth, alignment: .leading)
 
             control
-                .frame(maxWidth: .infinity)
+                .frame(
+                    minWidth: HostPreferencesMetrics.fieldControlMinWidth,
+                    idealWidth: HostPreferencesMetrics.fieldControlIdealWidth,
+                    maxWidth: HostPreferencesMetrics.fieldControlMaxWidth,
+                    alignment: .leading
+                )
 
-            if let detail {
-                Text(detail)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+            Spacer(minLength: 0)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .contain)
     }
 }

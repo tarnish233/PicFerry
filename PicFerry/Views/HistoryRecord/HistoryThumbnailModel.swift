@@ -1,6 +1,6 @@
 //
 //  PreViewModel.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by 侯猛 on 2019/10/25.
 //  Copyright © 2019 Svend Jin. All rights reserved.

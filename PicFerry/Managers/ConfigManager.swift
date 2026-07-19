@@ -1,6 +1,6 @@
 //
 //  CoreManager.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/11.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -317,7 +317,7 @@ extension ConfigManager {
 
         let savePanel = NSSavePanel()
         savePanel.directoryURL = URL(fileURLWithPath: NSHomeDirectory().appendingPathComponent(path: "Documents"))
-        savePanel.nameFieldStringValue = "PicFerry_hosts.json"
+        savePanel.nameFieldStringValue = "GitPic_hosts.json"
         savePanel.allowsOtherFileTypes = false
         savePanel.isExtensionHidden = true
         savePanel.canCreateDirectories = true

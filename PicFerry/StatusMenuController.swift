@@ -1,6 +1,6 @@
 //
 //  StatusMenuController.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/11.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -318,7 +318,7 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
                 case .upToDate(let current):
                     presentUpdateAlert(
                         title: "You're up to date.".localized,
-                        message: String(format: "PicFerry %@ is the latest version.".localized, current)
+                        message: String(format: "GitPic %@ is the latest version.".localized, current)
                     )
                 case .updateAvailable(let release):
                     presentUpdateAvailableAlert(release)
@@ -345,7 +345,7 @@ final class StatusMenuController: NSObject, NSMenuDelegate {
         NSApp.activate(ignoringOtherApps: true)
         let alert = NSAlert()
         alert.messageText = String(format: "A new version (%@) is available.".localized, release.tagName)
-        alert.informativeText = release.releaseNotes ?? "A new version of PicFerry is available for download.".localized
+        alert.informativeText = release.releaseNotes ?? "A new version of GitPic is available for download.".localized
         alert.addButton(withTitle: "Download Update".localized)
         alert.addButton(withTitle: "Cancel".localized)
         if alert.runModal() == .alertFirstButtonReturn {

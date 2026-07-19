@@ -2,14 +2,14 @@
 
 set -eu
 
-app_path=${PICFERRY_APP_PATH:-/Applications/PicFerry.app}
+app_path=${GITPIC_APP_PATH:-/Applications/GitPic.app}
 prefix=${PREFIX:-"$HOME/.local"}
-executable="$app_path/Contents/MacOS/PicFerry"
-destination="$prefix/bin/picferry"
+executable="$app_path/Contents/MacOS/GitPic"
+destination="$prefix/bin/gitpic"
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 
 if [ ! -x "$executable" ]; then
-    echo "PicFerry executable not found at: $executable" >&2
+    echo "GitPic executable not found at: $executable" >&2
     exit 1
 fi
 
@@ -17,5 +17,5 @@ mkdir -p "$prefix/bin"
 if [ -L "$destination" ]; then
     rm "$destination"
 fi
-install -m 755 "$script_dir/picferry" "$destination"
+install -m 755 "$script_dir/gitpic" "$destination"
 echo "Installed: $destination"

@@ -1,17 +1,17 @@
-# PicFerry
+# GitPic
 
 [简体中文](README.md) | **English**
 
-PicFerry is a native macOS menu-bar uploader for GitHub and Gitee. It can upload selected files, clipboard contents, screenshots, URLs, and dragged items, then copy the resulting link as URL, Markdown, or HTML.
+GitPic is a native macOS menu-bar uploader for GitHub. It can upload selected files, clipboard contents, screenshots, URLs, and dragged items, then copy the resulting link as URL, Markdown, or HTML.
 
 ## Features
 
 - Upload selected files, clipboard contents, or screenshots from the menu bar
 - Drag local files or browser images onto the menu-bar icon to upload them
-- Switch quickly between configured GitHub and Gitee hosts
+- Sign in with GitHub and pick a repository to upload to
 - Customize URL, Markdown, and HTML output, encoding, and image compression
 - Receive clear success or failure notifications and review results in upload history
-- Trigger uploads with global keyboard shortcuts or the `picferry` CLI
+- Trigger uploads with global keyboard shortcuts or the `gitpic` CLI
 
 ## Requirements
 
@@ -21,7 +21,7 @@ PicFerry is a native macOS menu-bar uploader for GitHub and Gitee. It can upload
 
 ## Install
 
-Download `PicFerry-2.0.2-macos26-arm64.dmg` from Releases, open it, and drag `PicFerry.app` into the Applications folder.
+Download `GitPic-2.0.3-macos26-arm64.dmg` from Releases, open it, and drag `GitPic.app` into the Applications folder.
 
 Current test builds are locally signed. If macOS blocks the first launch, Control-click the app in Finder and choose **Open**.
 
@@ -30,12 +30,12 @@ Current test builds are locally signed. If macOS blocks the first launch, Contro
 ```bash
 xcodebuild build \
   -project PicFerry.xcodeproj \
-  -scheme 'PicFerry(Release)' \
+  -scheme 'GitPic(Release)' \
   -configuration Debug \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Language-specific schemes are also available as `PicFerry(简体中文)` and `PicFerry(繁体中文)`.
+Language-specific schemes are also available as `GitPic(简体中文)` and `GitPic(繁体中文)`.
 
 ## Create a DMG
 
@@ -45,10 +45,10 @@ After building and signing the Release app, run:
 ./Scripts/create-dmg.sh
 ```
 
-By default, the script reads `build/release/PicFerry.app` and creates a DMG with an Applications shortcut in the same directory. Custom app and output paths are also supported:
+By default, the script reads `build/release/GitPic.app` and creates a DMG with an Applications shortcut in the same directory. Custom app and output paths are also supported:
 
 ```bash
-./Scripts/create-dmg.sh /path/to/PicFerry.app /path/to/PicFerry.dmg
+./Scripts/create-dmg.sh /path/to/GitPic.app /path/to/GitPic.dmg
 ```
 
 ## Command line
@@ -56,16 +56,16 @@ By default, the script reads `build/release/PicFerry.app` and creates a DMG with
 The application executable also provides the CLI:
 
 ```bash
-/Applications/PicFerry.app/Contents/MacOS/PicFerry \
+/Applications/GitPic.app/Contents/MacOS/GitPic \
   --upload ~/Desktop/example.png \
   --output markdown
 ```
 
-Install the shorter `picferry` command for the current user:
+Install the shorter `gitpic` command for the current user:
 
 ```bash
 ./Scripts/install-cli.sh
-picferry --help
+gitpic --help
 ```
 
 The installer writes only a small launcher under `~/.local/bin`. Ensure that directory is included in `PATH`.
@@ -82,11 +82,11 @@ Common options:
 
 ## Application information
 
-- Product and executable: `PicFerry`
-- Bundle identifier: `com.tarnish233.PicFerry`
-- URL scheme: `picferry://`
-- Version: `2.0.2 (41)`
+- Product and executable: `GitPic`
+- Bundle identifier: `com.tarnish233.gitpic`
+- URL scheme: `gitpic://`
+- Version: `2.0.3 (41)`
 
 ## License and attribution
 
-Licensed under the [Apache License 2.0](LICENSE). PicFerry is derived from the original [uPic project](https://github.com/gee1k/uPic); the original copyright and license notices are retained as required by the license. See [NOTICE](NOTICE).
+Licensed under the [Apache License 2.0](LICENSE). GitPic is derived from the original [uPic project](https://github.com/gee1k/uPic); the original copyright and license notices are retained as required by the license. See [NOTICE](NOTICE).

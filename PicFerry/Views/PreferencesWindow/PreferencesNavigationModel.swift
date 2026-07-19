@@ -1,6 +1,6 @@
 //
 //  PreferencesNavigationModel.swift
-//  PicFerry
+//  GitPic
 //
 
 import Observation

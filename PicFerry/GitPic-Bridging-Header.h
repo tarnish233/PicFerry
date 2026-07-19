@@ -1,5 +1,5 @@
-#ifndef PicFerry_Bridging_Header_h
-#define PicFerry_Bridging_Header_h
+#ifndef GitPic_Bridging_Header_h
+#define GitPic_Bridging_Header_h
 
 #include <stddef.h>
 
@@ -10,4 +10,4 @@ unsigned long _data2Data(
     size_t png_size
 );
 
-#endif /* PicFerry_Bridging_Header_h */
+#endif /* GitPic_Bridging_Header_h */

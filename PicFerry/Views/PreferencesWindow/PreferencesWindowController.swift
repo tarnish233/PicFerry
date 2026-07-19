@@ -1,6 +1,6 @@
 //
 //  PreferencesWindowController.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/11.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -78,12 +78,12 @@ final class PreferencesWindowController: NSWindowController {
         window.backgroundColor = .windowBackgroundColor
         window.isMovableByWindowBackground = true
         window.isReleasedWhenClosed = false
-        window.minSize = NSSize(width: 720, height: 480)
+        window.minSize = NSSize(width: 760, height: 520)
         window.setContentSize(NSSize(width: 1040, height: 680))
-        window.setFrameAutosaveName("PicFerry.PreferencesWindow.HostWorkspaceV3")
+        window.setFrameAutosaveName("GitPic.PreferencesWindow.HostWorkspaceV3")
         window.delegate = self
 
-        if !window.setFrameUsingName("PicFerry.PreferencesWindow.HostWorkspaceV3") {
+        if !window.setFrameUsingName("GitPic.PreferencesWindow.HostWorkspaceV3") {
             window.center()
         }
 

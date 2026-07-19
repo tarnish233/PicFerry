@@ -1,6 +1,6 @@
 //
 //  Logger.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend on 2022/6/19.
 //  Copyright © 2022 Svend Jin. All rights reserved.
@@ -115,7 +115,7 @@ public final class Logger: @unchecked Sendable {
         
         let savePanel = NSSavePanel()
         savePanel.directoryURL = URL(fileURLWithPath: NSHomeDirectory().appendingPathComponent(path: "Downloads"))
-        savePanel.nameFieldStringValue = "PicFerry_Logs.zip"
+        savePanel.nameFieldStringValue = "GitPic_Logs.zip"
         savePanel.allowsOtherFileTypes = false
         savePanel.isExtensionHidden = false
         savePanel.canCreateDirectories = true
@@ -129,7 +129,7 @@ public final class Logger: @unchecked Sendable {
                         return
                     }
                     
-                    let zipFilePath = try Zip.quickZipFiles(self.logFileURLArray, fileName: "PicFerry_Logs") // Zip
+                    let zipFilePath = try Zip.quickZipFiles(self.logFileURLArray, fileName: "GitPic_Logs") // Zip
                     try? Data(contentsOf: zipFilePath, options: .mappedIfSafe).write(to: url)
                     
                     NotificationExt.shared.post(title: "Successfully".localized,

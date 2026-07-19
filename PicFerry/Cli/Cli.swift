@@ -1,6 +1,6 @@
 //
-//  PicFerryCli.swift
-//  PicFerry
+//  GitPicCli.swift
+//  GitPic
 //
 //  Created by Svend Jin on 2019/12/26.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -39,7 +39,7 @@ final class Cli {
     
     func parseInvocation() -> CliInvocation {
         var arguments = CommandLine.arguments
-        if let invocationName = ProcessInfo.processInfo.environment["PICFERRY_CLI_NAME"],
+        if let invocationName = ProcessInfo.processInfo.environment["GITPIC_CLI_NAME"],
            !invocationName.isEmpty {
             arguments[0] = invocationName
         }
@@ -56,7 +56,7 @@ final class Cli {
         output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
         silent = BoolOption(shortFlag: "s", longFlag: "silent", helpMessage: "Turn off error message output".localized)
         help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
-        version = BoolOption(shortFlag: "v", longFlag: "version", helpMessage: "Print the PicFerry version".localized)
+        version = BoolOption(shortFlag: "v", longFlag: "version", helpMessage: "Print the GitPic version".localized)
         cliKit.addOptions(upload, output, silent, help, version)
         do {
             try cliKit.parse(strict: true)
@@ -71,7 +71,7 @@ final class Cli {
         }
 
         if version.value {
-            Console.write("PicFerry \(getAppVersionString())")
+            Console.write("GitPic \(getAppVersionString())")
             return .exit(EX_OK)
         }
         

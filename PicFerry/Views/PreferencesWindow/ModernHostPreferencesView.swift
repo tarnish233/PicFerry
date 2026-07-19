@@ -1,49 +1,35 @@
 //
 //  ModernHostPreferencesView.swift
-//  PicFerry
+//  GitPic
 //
-//  Image-host management workspace.
+//  Single-page GitHub image-host workspace.
 //
 
 import SwiftUI
 
 struct ModernHostPreferencesView: View {
     @Bindable var model: HostPreferencesModel
-    @State private var showsProviderPicker = false
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                header
+        VStack(spacing: 0) {
+            header
 
-                Divider()
+            Divider()
 
-                HStack(spacing: 0) {
-                    HostSidebarView(model: model, addAction: showProviderPicker)
-
-                    Divider()
-
-                    if let host = model.selectedHost {
-                        HostConfigurationView(model: model, host: host)
-                            .id("\(host.id)-\(model.reloadRevision)")
-                    } else {
-                        ContentUnavailableView(
-                            "No Host".localized,
-                            systemImage: "externaldrive.badge.questionmark"
-                        )
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                }
+            if let host = model.selectedHost {
+                HostConfigurationView(model: model, host: host)
+                    .id("\(host.id)-\(model.reloadRevision)")
+            } else {
+                ContentUnavailableView(
+                    "No Host".localized,
+                    systemImage: "externaldrive.badge.questionmark"
+                )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                Divider()
-
-                footer
             }
 
-            if showsProviderPicker {
-                providerPicker
-            }
+            Divider()
+
+            footer
         }
         .background(Color(nsColor: .windowBackgroundColor))
         .alert("Unable to save host configuration".localized, isPresented: $model.showsSaveError) {
@@ -54,15 +40,16 @@ struct ModernHostPreferencesView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: HostPreferencesMetrics.headerSpacing) {
-            Text("Image Hosts".localized)
+            Text("Image Host".localized)
                 .font(.title2)
                 .bold()
 
-            Text("Manage image upload services. The default service is used for new uploads.".localized)
+            Text("Sign in with GitHub, choose a repository, and GitPic uploads there.".localized)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
         .padding(.horizontal, HostPreferencesMetrics.pageInset)
         .padding(.vertical, HostPreferencesMetrics.headerVerticalInset)
     }
@@ -82,38 +69,5 @@ struct ModernHostPreferencesView: View {
         }
         .padding(.horizontal, HostPreferencesMetrics.pageInset)
         .padding(.vertical, HostPreferencesMetrics.footerVerticalInset)
-    }
-
-    private var providerPicker: some View {
-        ZStack {
-            Color.black.opacity(0.14)
-                .ignoresSafeArea()
-                .onTapGesture(perform: dismissProviderPicker)
-                .accessibilityHidden(true)
-
-            HostProviderPickerView(
-                addAction: { type in
-                    model.add(type)
-                    dismissProviderPicker()
-                },
-                cancelAction: dismissProviderPicker
-            )
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(Color(nsColor: .separatorColor).opacity(0.35), lineWidth: 1)
-            }
-            .shadow(color: .black.opacity(0.2), radius: 24, y: 10)
-            .onExitCommand(perform: dismissProviderPicker)
-        }
-        .zIndex(1)
-    }
-
-    private func showProviderPicker() {
-        showsProviderPicker = true
-    }
-
-    private func dismissProviderPicker() {
-        showsProviderPicker = false
     }
 }

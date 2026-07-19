@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-PicFerry is a native macOS **menu-bar image/file uploader** for GitHub and Gitee image hosting. It is a single AppKit executable (`com.tarnish233.PicFerry`) that behaves as **both a GUI app and a CLI**, plus a `picferry://` URL scheme and AppleScript support. Requires Xcode 26, deploys only to **macOS 26+, arm64**. Derived from the [uPic project](https://github.com/gee1k/uPic) (Apache 2.0 — preserve `NOTICE`).
+GitPic is a native macOS **menu-bar image/file uploader** for GitHub image hosting. It is a single AppKit executable (`com.tarnish233.gitpic`) that behaves as **both a GUI app and a CLI**, plus a `gitpic://` URL scheme and AppleScript support. Requires Xcode 26, deploys only to **macOS 26+, arm64**. Derived from the [uPic project](https://github.com/gee1k/uPic) (Apache 2.0 — preserve `NOTICE`).
 
 ## Build & run
 
 ```bash
 # Command-line debug build (no signing identity needed)
-xcodebuild build -project PicFerry.xcodeproj -scheme 'PicFerry(Release)' \
+xcodebuild build -project PicFerry.xcodeproj -scheme 'GitPic(Release)' \
   -configuration Debug CODE_SIGNING_ALLOWED=NO
 
 # Resolve SPM dependencies pinned in Package.resolved
@@ -18,17 +18,17 @@ xcodebuild -resolvePackageDependencies -project PicFerry.xcodeproj
 ```
 
 - There is **no XCTest target**. Verification = it compiles, plus manual exercise of the affected path (upload, clipboard output, preferences persistence, CLI, URL scheme, localized UI). Run from Xcode for menu-bar/permissions debugging.
-- Localized UI schemes: `PicFerry(简体中文)` and `PicFerry(繁体中文)`.
-- Package a release: `./Scripts/create-dmg.sh` (reads `build/release/PicFerry.app`).
-- Install the CLI shim: `./Scripts/install-cli.sh` → `~/.local/bin/picferry` (a thin wrapper that execs the app's embedded executable).
+- Localized UI schemes: `GitPic(简体中文)` and `GitPic(繁体中文)`.
+- Package a release: `./Scripts/create-dmg.sh` (reads `build/release/GitPic.app`).
+- Install the CLI shim: `./Scripts/install-cli.sh` → `~/.local/bin/gitpic` (a thin wrapper that execs the app's embedded executable).
 
 ## Architecture
 
 ### Dual entry point (GUI vs CLI)
-`AppDelegate.applicationWillFinishLaunching` calls `Cli.shared.parseInvocation()`, which inspects `CommandLine.arguments` and returns `.gui`, `.upload([paths])`, or `.exit(status)`. When invoked as CLI the app runs `Cli.shared.startUpload` and returns *before* setting up the status bar. The `picferry` shell shim sets `PICFERRY_CLI_NAME` so usage output shows the right program name. So the same code path serves the menu bar, the CLI, and (via `handleGetURLEvent`) the `picferry://` URL scheme.
+`AppDelegate.applicationWillFinishLaunching` calls `Cli.shared.parseInvocation()`, which inspects `CommandLine.arguments` and returns `.gui`, `.upload([paths])`, or `.exit(status)`. When invoked as CLI the app runs `Cli.shared.startUpload` and returns *before* setting up the status bar. The `gitpic` shell shim sets `GITPIC_CLI_NAME` so usage output shows the right program name. So the same code path serves the menu bar, the CLI, and (via `handleGetURLEvent`) the `gitpic://` URL scheme.
 
 ### Upload flow (the spine)
-`BaseUploader.upload(url:)` / `BaseUploader.upload(data:)` are the **single unified entry points** for every upload trigger (menu, drag, clipboard, screenshot, CLI, URL scheme). They resolve the default `Host`, enforce size limits, then dispatch on `host.type` via a `switch` to the provider singleton (`GithubUploader.shared` / `GiteeUploader.shared`). Providers subclass `BaseUploader` and report back through its `start()` / `completed(...)` / `faild(...)` methods, which hop to `@MainActor` and call `AppDelegate.uploadStart/uploadCompleted/uploadFaild`. `completed` also writes a thumbnailed `HistoryThumbnailModel` to history.
+`BaseUploader.upload(url:)` / `BaseUploader.upload(data:)` are the **single unified entry points** for every upload trigger (menu, drag, clipboard, screenshot, CLI, URL scheme). They resolve the default `Host`, enforce size limits, then dispatch on `host.type` to `GithubUploader.shared`. The uploader subclasses `BaseUploader` and reports back through its `start()` / `completed(...)` / `faild(...)` methods, which hop to `@MainActor` and call `AppDelegate.uploadStart/uploadCompleted/uploadFaild`. `completed` also writes a thumbnailed `HistoryThumbnailModel` to history.
 
 `BaseUploaderUtil` holds the provider-agnostic helpers: PNG/JPEG compression (via bundled `libminipng`), filename/`saveKey` templating with variable substitution, and output-URL formatting (URL / Markdown / HTML).
 

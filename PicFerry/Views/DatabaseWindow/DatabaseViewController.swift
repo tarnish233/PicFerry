@@ -1,6 +1,6 @@
 //
 //  DatabaseViewController.swift
-//  PicFerry
+//  GitPic
 //
 //  Native SwiftUI upload history.
 //
@@ -107,8 +107,20 @@ struct HistoryView: View {
     @State private var model = HistoryViewModel()
 
     var body: some View {
-        historyTable
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack(alignment: .leading, spacing: PreferencesStyleMetrics.sectionSpacing) {
+            Text("Upload History".localized)
+                .font(.title2)
+                .bold()
+                .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
+
+            historyTable
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .preferencesCard()
+        }
+        .padding(.horizontal, PreferencesStyleMetrics.pageHorizontalInset)
+        .padding(.top, PreferencesStyleMetrics.pageTopInset)
+        .padding(.bottom, PreferencesStyleMetrics.pageBottomInset)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color(nsColor: .windowBackgroundColor))
         .searchable(text: $model.searchText, prompt: "Search upload history".localized)
         .toolbar {

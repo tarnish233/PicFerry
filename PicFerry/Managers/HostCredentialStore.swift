@@ -1,6 +1,6 @@
 //
 //  HostCredentialStore.swift
-//  PicFerry
+//  GitPic
 //
 //  Stores provider credentials outside UserDefaults.
 //
@@ -11,7 +11,7 @@ import Security
 @MainActor
 enum HostCredentialStore {
     private static var service: String {
-        "\(Bundle.main.bundleIdentifier ?? "com.tarnish233.PicFerry").host-credentials"
+        "\(Bundle.main.bundleIdentifier ?? "com.tarnish233.gitpic").host-credentials"
     }
 
     static func hydrate(_ host: Host) {

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+app_path=${GITPIC_APP_PATH:-/Applications/GitPic.app}
+executable="$app_path/Contents/MacOS/GitPic"
+
+if [ ! -x "$executable" ]; then
+    echo "GitPic executable not found at: $executable" >&2
+    exit 1
+fi
+
+export GITPIC_CLI_NAME=gitpic
+exec "$executable" "$@"

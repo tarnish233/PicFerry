@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "16A6DC5322AA375700813706"
-               BuildableName = "PicFerry.app"
-               BlueprintName = "PicFerry"
+               BuildableName = "GitPic.app"
+               BlueprintName = "GitPic"
                ReferencedContainer = "container:PicFerry.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "zh-Hans"
+      language = "zh-Hant"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "16A6DC5322AA375700813706"
-            BuildableName = "PicFerry.app"
-            BlueprintName = "PicFerry"
+            BuildableName = "GitPic.app"
+            BlueprintName = "GitPic"
             ReferencedContainer = "container:PicFerry.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "16A6DC5322AA375700813706"
-            BuildableName = "PicFerry.app"
-            BlueprintName = "PicFerry"
+            BuildableName = "GitPic.app"
+            BlueprintName = "GitPic"
             ReferencedContainer = "container:PicFerry.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

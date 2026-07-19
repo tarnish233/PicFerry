@@ -1,6 +1,6 @@
 //
 //  GithubUtil.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/29.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -18,7 +18,7 @@ enum GithubUtil {
         var parameters = Parameters()
         parameters["branch"] = branch
         parameters["content"] = b64Content
-        parameters["message"] = "⬆ Uploaded by PicFerry\nhttps://github.com/tarnish233/PicFerry"
+        parameters["message"] = "⬆ Uploaded by GitPic\nhttps://github.com/tarnish233/GitPic"
         return parameters
     }
 }

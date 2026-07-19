@@ -27,7 +27,7 @@
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>picferry</string>
+				<string>gitpic</string>
 			</array>
 		</dict>
 	</array>
@@ -47,13 +47,13 @@
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026 PicFerry contributors.</string>
+	<string>Copyright © 2026 GitPic contributors.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
-	<string>PicFerry.sdef</string>
+	<string>GitPic.sdef</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>

@@ -264,7 +264,7 @@
 
 	</suite>
     
-    <suite name="PicFerry Suite" code="PcFy" description="PicFerry suite.">
+    <suite name="GitPic Suite" code="PcFy" description="GitPic suite.">
         <command name="upload" code="PcFyUplo" description="Upload files.">
             <cocoa class="AppleScriptCommand"/>
             <direct-parameter description="File URL" type="text"/>

@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-PicFerry is a Swift 5 macOS menu-bar application managed by `PicFerry.xcodeproj`. Application code lives in `PicFerry/`: uploader integrations are grouped by provider under `Models/`, window and storyboard code under `Views/`, shared services under `Managers/`, and reusable helpers under `Basic/`, `Extensions/`, and `Utils/`. Images belong in `PicFerry/Assets.xcassets`; localized strings and storyboards live in `Base.lproj`, `mul.lproj`, and `.xcstrings` catalogs. `libs/` contains the bundled `libminipng` library; do not edit generated library contents.
+GitPic is a Swift 5 macOS menu-bar application managed by `PicFerry.xcodeproj`. Application code lives in `PicFerry/`: uploader integrations are grouped by provider under `Models/`, window and storyboard code under `Views/`, shared services under `Managers/`, and reusable helpers under `Basic/`, `Extensions/`, and `Utils/`. Images belong in `PicFerry/Assets.xcassets`; localized strings and storyboards live in `Base.lproj`, `mul.lproj`, and `.xcstrings` catalogs. `libs/` contains the bundled `libminipng` library; do not edit generated library contents.
 
 ## Build, Test, and Development Commands
 
@@ -10,9 +10,9 @@ Requires Xcode 26; the application target deploys only to macOS 26.
 
 - `open PicFerry.xcodeproj` opens the project in Xcode and resolves Swift Package dependencies.
 - `xcodebuild -resolvePackageDependencies -project PicFerry.xcodeproj` resolves the versions pinned in `Package.resolved`.
-- `xcodebuild build -project PicFerry.xcodeproj -scheme 'PicFerry(Release)' -configuration Debug CODE_SIGNING_ALLOWED=NO` performs a command-line debug build without requiring a signing identity.
+- `xcodebuild build -project PicFerry.xcodeproj -scheme 'GitPic(Release)' -configuration Debug CODE_SIGNING_ALLOWED=NO` performs a command-line debug build without requiring a signing identity.
 
-Use the localized schemes `PicFerry(简体中文)` and `PicFerry(繁体中文)` when checking language-specific UI. Run the app from Xcode for menu-bar and permissions debugging.
+Use the localized schemes `GitPic(简体中文)` and `GitPic(繁体中文)` when checking language-specific UI. Run the app from Xcode for menu-bar and permissions debugging.
 
 ## Coding Style & Naming Conventions
 

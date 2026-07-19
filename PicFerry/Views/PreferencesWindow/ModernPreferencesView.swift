@@ -1,6 +1,6 @@
 //
 //  ModernPreferencesView.swift
-//  PicFerry
+//  GitPic
 //
 //  Created for the macOS 26 preferences redesign.
 //
@@ -44,6 +44,7 @@ enum PreferencesDestination: String, CaseIterable, Identifiable {
             return "info.circle"
         }
     }
+
 }
 
 struct ModernPreferencesView: View {
@@ -77,7 +78,7 @@ struct ModernPreferencesView: View {
                 }
         }
         .navigationSplitViewStyle(.balanced)
-        .frame(minWidth: 720, minHeight: 480)
+        .frame(minWidth: 760, minHeight: 520)
     }
 
     @ViewBuilder
@@ -97,24 +98,6 @@ struct ModernPreferencesView: View {
 
 // MARK: - Shared layout
 
-private enum Metrics {
-    static let pageHorizontalInset: CGFloat = 24
-    static let pageTopInset: CGFloat = 24
-    static let pageBottomInset: CGFloat = 28
-
-    static let sectionSpacing: CGFloat = 22
-    static let sectionHeaderSpacing: CGFloat = 8
-
-    static let rowHorizontalInset: CGFloat = 16
-    static let rowVerticalInset: CGFloat = 10
-    static let rowMinHeight: CGFloat = 44
-    static let rowContentSpacing: CGFloat = 16
-    static let titleDetailSpacing: CGFloat = 3
-
-    static let cornerRadius: CGFloat = 12
-
-}
-
 private struct PreferencesPage<Content: View>: View {
     let title: String
     let content: Content
@@ -126,19 +109,19 @@ private struct PreferencesPage<Content: View>: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Metrics.sectionSpacing) {
+            VStack(alignment: .leading, spacing: PreferencesStyleMetrics.sectionSpacing) {
                 Text(title)
                     .font(.title2)
                     .bold()
-                    .padding(.leading, Metrics.rowHorizontalInset)
+                    .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
                     .padding(.bottom, 2)
 
                 content
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, Metrics.pageHorizontalInset)
-            .padding(.top, Metrics.pageTopInset)
-            .padding(.bottom, Metrics.pageBottomInset)
+            .padding(.horizontal, PreferencesStyleMetrics.pageHorizontalInset)
+            .padding(.top, PreferencesStyleMetrics.pageTopInset)
+            .padding(.bottom, PreferencesStyleMetrics.pageBottomInset)
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
         .defaultScrollAnchor(.top)
@@ -156,23 +139,15 @@ private struct PreferencesSection<Content: View>: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Metrics.sectionHeaderSpacing) {
+        VStack(alignment: .leading, spacing: PreferencesStyleMetrics.sectionHeaderSpacing) {
             Text(title)
                 .font(.headline)
-                .foregroundStyle(.secondary)
-                .padding(.leading, Metrics.rowHorizontalInset)
+                .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
 
             VStack(spacing: 0) {
                 content
             }
-            .background(
-                Color(nsColor: .controlBackgroundColor).opacity(0.78),
-                in: RoundedRectangle(cornerRadius: Metrics.cornerRadius)
-            )
-            .overlay {
-                RoundedRectangle(cornerRadius: Metrics.cornerRadius)
-                    .stroke(Color(nsColor: .separatorColor).opacity(0.22), lineWidth: 1)
-            }
+            .preferencesCard()
         }
     }
 }
@@ -189,8 +164,8 @@ private struct PreferencesRow<Control: View>: View {
     }
 
     var body: some View {
-        HStack(alignment: detail == nil ? .center : .top, spacing: Metrics.rowContentSpacing) {
-            VStack(alignment: .leading, spacing: Metrics.titleDetailSpacing) {
+        HStack(alignment: detail == nil ? .center : .top, spacing: PreferencesStyleMetrics.rowContentSpacing) {
+            VStack(alignment: .leading, spacing: PreferencesStyleMetrics.titleDetailSpacing) {
                 Text(title)
                     .font(.body)
 
@@ -206,16 +181,16 @@ private struct PreferencesRow<Control: View>: View {
             control
                 .fixedSize(horizontal: true, vertical: false)
         }
-        .padding(.horizontal, Metrics.rowHorizontalInset)
-        .padding(.vertical, Metrics.rowVerticalInset)
-        .frame(minHeight: Metrics.rowMinHeight)
+        .padding(.horizontal, PreferencesStyleMetrics.rowHorizontalInset)
+        .padding(.vertical, PreferencesStyleMetrics.rowVerticalInset)
+        .frame(minHeight: PreferencesStyleMetrics.rowMinHeight)
     }
 }
 
 private struct PreferencesDivider: View {
     var body: some View {
         Divider()
-            .padding(.leading, Metrics.rowHorizontalInset)
+            .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
     }
 }
 
@@ -260,8 +235,8 @@ private struct GeneralPreferencesView: View {
         PreferencesPage("General".localized) {
             PreferencesSection("Startup".localized) {
                 PreferencesRow(
-                    "Launch PicFerry at login".localized,
-                    detail: "PicFerry will automatically launch at login.".localized
+                    "Launch GitPic at login".localized,
+                    detail: "GitPic will automatically launch at login.".localized
                 ) {
                     LaunchAtLogin.Toggle { EmptyView() }
                         .labelsHidden()
@@ -379,48 +354,51 @@ private struct AboutPreferencesView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 0)
+        PreferencesPage("About".localized) {
+            VStack(spacing: 0) {
+                VStack(spacing: 16) {
+                    Image(nsImage: NSApp.applicationIconImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 112, height: 112)
+                        .accessibilityHidden(true)
 
-            VStack(spacing: 16) {
-                Image(nsImage: NSApp.applicationIconImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 112, height: 112)
-                    .accessibilityHidden(true)
+                    VStack(spacing: 5) {
+                        Text("GitPic")
+                            .font(.largeTitle)
+                            .bold()
 
-                VStack(spacing: 5) {
-                    Text("PicFerry")
-                        .font(.largeTitle)
-                        .bold()
+                        Text(getAppVersionString())
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                    }
 
-                    Text(getAppVersionString())
+                    updateControl
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 28)
+
+                Divider()
+                    .padding(.leading, PreferencesStyleMetrics.rowHorizontalInset)
+
+                HStack(spacing: PreferencesStyleMetrics.rowContentSpacing) {
+                    Label("Powered by Codex", systemImage: "sparkles")
                         .font(.callout)
                         .foregroundStyle(.secondary)
+
+                    Spacer()
+
+                    Text(copyright)
+                        .font(.footnote)
+                        .foregroundStyle(.tertiary)
+                        .multilineTextAlignment(.trailing)
                 }
-
-                updateControl
-
-                Label("Powered by Codex", systemImage: "sparkles")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 8)
-                    .glassEffect()
-                    .padding(.top, 6)
+                .padding(.horizontal, PreferencesStyleMetrics.rowHorizontalInset)
+                .padding(.vertical, PreferencesStyleMetrics.rowVerticalInset)
             }
-
-            Spacer(minLength: 0)
-
-            Text(copyright)
-                .font(.footnote)
-                .foregroundStyle(.tertiary)
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 24)
+            .preferencesCard()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, Metrics.pageHorizontalInset)
-        .background(Color(nsColor: .windowBackgroundColor))
     }
 
     @ViewBuilder

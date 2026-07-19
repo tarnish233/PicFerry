@@ -1,6 +1,6 @@
 //
 //  HostConfig.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/15.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -20,8 +20,6 @@ class HostConfig: NSObject, Codable {
         switch type {
         case .github:
             return GithubHostConfig()
-        case .gitee:
-            return GiteeHostConfig()
         }
     }
 
@@ -50,10 +48,8 @@ class HostConfig: NSObject, Codable {
         switch type {
         case .github:
             config = GithubHostConfig.deserialize(str: str)
-        case .gitee:
-            config = GiteeHostConfig.deserialize(str: str)
         }
-        
+
         config?.fixPrefixAndSuffix()
         return config
     }

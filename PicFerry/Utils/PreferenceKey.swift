@@ -1,6 +1,6 @@
 //
 //  PreferenceKey.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/13.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -9,20 +9,20 @@
 import Foundation
 
 struct Keys {
-    static let firstUsage = "PicFerry_FirstUsage"
-    static let hostItems = "PicFerry_hostItems"
-    static let defaultHostId = "PicFerry_DefaultHostId"
-    static let outputFormat = "PicFerry_OutputFormat"
-    static let outputFormatEncoded = "PicFerry_OutputFormatEncoded"
-    static let historyList = "PicFerry_HistoryList_New"
-    static let historyLimit = "PicFerry_HistoryLimit_New"
-    static let compressFactor = "PicFerry_CompressFactor"
-    static let lastUpdateCheck = "PicFerry_LastUpdateCheck"
-    static let lastNotifiedVersion = "PicFerry_LastNotifiedVersion"
-    static let rootDirectoryBookmark = "PicFerry_RootDirectoryBookmark"
-    static let homeDirectoryBookmark = "PicFerry_HomeDirectoryBookmark"
-    static let rootSubdirectoryBookmarks = "PicFerry_RootSubdirectoryBookmarks"
-    static let rootSubdirectoryNames = "PicFerry_RootSubdirectoryNames"
+    static let firstUsage = "GitPic_FirstUsage"
+    static let hostItems = "GitPic_hostItems"
+    static let defaultHostId = "GitPic_DefaultHostId"
+    static let outputFormat = "GitPic_OutputFormat"
+    static let outputFormatEncoded = "GitPic_OutputFormatEncoded"
+    static let historyList = "GitPic_HistoryList_New"
+    static let historyLimit = "GitPic_HistoryLimit_New"
+    static let compressFactor = "GitPic_CompressFactor"
+    static let lastUpdateCheck = "GitPic_LastUpdateCheck"
+    static let lastNotifiedVersion = "GitPic_LastNotifiedVersion"
+    static let rootDirectoryBookmark = "GitPic_RootDirectoryBookmark"
+    static let homeDirectoryBookmark = "GitPic_HomeDirectoryBookmark"
+    static let rootSubdirectoryBookmarks = "GitPic_RootSubdirectoryBookmarks"
+    static let rootSubdirectoryNames = "GitPic_RootSubdirectoryNames"
 }
 
 class DefaultsKeys {

@@ -1,6 +1,6 @@
 //
 //  HostEditorDraft.swift
-//  PicFerry
+//  GitPic
 //
 
 import Observation
@@ -13,7 +13,6 @@ final class HostEditorDraft {
     var repo: String
     var branch: String
     var token: String
-    var domain: String
     var saveKeyPath: String
 
     init(host: Host) {
@@ -22,7 +21,6 @@ final class HostEditorDraft {
         repo = Self.value("repo", from: host)
         branch = Self.value("branch", from: host)
         token = Self.value("token", from: host)
-        domain = Self.value("domain", from: host)
         saveKeyPath = Self.value("saveKeyPath", from: host)
     }
 

@@ -1,6 +1,6 @@
 //
 //  AppleScriptCommand.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Licardo on 2021/6/6.
 //  Copyright © 2021 Svend Jin. All rights reserved.
@@ -12,7 +12,7 @@ import Cocoa
     override func performDefaultImplementation() -> Any? {
         
         if let fileURL = directParameter as? NSString {
-            let encodeUrl = "picferry://files?\(fileURL)".urlEncoded()
+            let encodeUrl = "gitpic://files?\(fileURL)".urlEncoded()
             
             if let url = URL(string: encodeUrl) {
                 NSWorkspace.shared.open(url)

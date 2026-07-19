@@ -1,6 +1,6 @@
 //
 //  ScreenshotAuthorizationHelpViewController.swift
-//  PicFerry
+//  GitPic
 //
 //  Native SwiftUI screen-capture permission help.
 //
@@ -23,7 +23,7 @@ struct ScreenshotAuthorizationHelpView: View {
                 Text("Allow Screen Recording".localized)
                     .font(.title)
                     .bold()
-                Text("PicFerry uses the built-in macOS screenshot tool. Allow Screen Recording in System Settings, then try again.".localized)
+                Text("GitPic uses the built-in macOS screenshot tool. Allow Screen Recording in System Settings, then try again.".localized)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 420)

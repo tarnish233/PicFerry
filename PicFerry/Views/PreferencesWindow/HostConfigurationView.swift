@@ -1,6 +1,8 @@
 //
 //  HostConfigurationView.swift
-//  PicFerry
+//  GitPic
+//
+//  单页 GitHub 图床配置：登录 → 选仓库 → 选分支 / Single-page GitHub host config.
 //
 
 import SwiftUI
@@ -9,7 +11,7 @@ struct HostConfigurationView: View {
     let model: HostPreferencesModel
     let host: Host
     @State private var draft: HostEditorDraft
-    @State private var revealsToken = false
+    @State private var repositorySelection = GithubRepositorySelectionModel()
 
     init(model: HostPreferencesModel, host: Host) {
         self.model = model
@@ -17,20 +19,20 @@ struct HostConfigurationView: View {
         _draft = State(initialValue: HostEditorDraft(host: host))
     }
 
+    private var isSignedIn: Bool {
+        !draft.token.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: HostPreferencesMetrics.sectionSpacing) {
-                overviewSection
-                usageSection
-                configurationSection
+                accountSection
+                repositorySection
             }
             .padding(HostPreferencesMetrics.pageInset)
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
         .defaultScrollAnchor(.top)
-        .onChange(of: draft.name) { _, value in
-            model.updateName(value, hostID: host.id)
-        }
         .onChange(of: draft.owner) { _, value in
             model.updateString(value, for: "owner", hostID: host.id)
         }
@@ -43,97 +45,125 @@ struct HostConfigurationView: View {
         .onChange(of: draft.token) { _, value in
             model.updateString(value, for: "token", hostID: host.id)
         }
-        .onChange(of: draft.domain) { _, value in
-            model.updateString(value, for: "domain", hostID: host.id)
-        }
         .onChange(of: draft.saveKeyPath) { _, value in
             model.updateString(value, for: "saveKeyPath", hostID: host.id)
         }
+        .onDisappear(perform: repositorySelection.cancel)
     }
 
-    private var overviewSection: some View {
+    // MARK: - Account
+
+    private var accountSection: some View {
         @Bindable var draft = draft
 
-        return VStack(alignment: .leading, spacing: 16) {
+        return VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 12) {
-                Image(nsImage: Host.getIconByType(type: host.type))
+                Image(nsImage: Host.getIconByType(type: .github))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 38, height: 38)
+                    .frame(width: 34, height: 34)
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(host.type.name)
                         .font(.title3)
                         .bold()
-                    Text("Host".localized)
+                    Text("Image Host".localized)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
 
                 Spacer()
-
-                if model.isDefault(host) {
-                    Label("Default image host".localized, systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.tint)
-                } else {
-                    Button("Set as Default".localized) {
-                        model.setDefault(hostID: host.id)
-                    }
-                }
             }
 
             Divider()
 
-            HostConfigurationField(
-                "Image host name".localized,
-                detail: "Used to identify this configuration in the menu bar.".localized
-            ) {
-                TextField("Image host name".localized, text: $draft.name)
+            if isSignedIn {
+                signedInRow
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Sign in to let GitPic upload to your repositories.".localized)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    GithubSignInView { token, login in
+                        guard model.completeSignIn(
+                            token: token,
+                            login: login,
+                            hostID: host.id
+                        ) else {
+                            return false
+                        }
+
+                        repositorySelection.reset()
+                        draft.token = token
+                        draft.owner = login ?? ""
+                        draft.repo = ""
+                        draft.branch = ""
+                        return true
+                    }
+                }
             }
         }
-        .hostPanelStyle()
+        .padding(HostPreferencesMetrics.panelInset)
+        .preferencesCard()
     }
 
-    private var usageSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("Before You Start".localized)
-                    .font(.headline)
-                Spacer()
-                Button("View token guide".localized, action: model.openHelp)
+    private var signedInRow: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "checkmark.seal.fill")
+                .foregroundStyle(.green)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(signedInTitle)
+                    .font(.body)
+                Text("Token saved to Keychain.".localized)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
-            Text(usageDescription)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+            Spacer()
+
+            Button("Sign out".localized, action: signOut)
+                .buttonStyle(.bordered)
+                .controlSize(.small)
         }
-        .hostPanelStyle()
     }
 
-    private var configurationSection: some View {
+    private var signedInTitle: String {
+        let owner = draft.owner.trimmingCharacters(in: .whitespaces)
+        return owner.isEmpty
+            ? "Signed in".localized
+            : String(format: "Signed in as %@".localized, owner)
+    }
+
+    // MARK: - Repository
+
+    private var repositorySection: some View {
         @Bindable var draft = draft
 
         return VStack(alignment: .leading, spacing: 16) {
-            Text("Configuration".localized)
+            Text("Repository".localized)
                 .font(.title3)
                 .bold()
 
             HostConfigurationField(
-                "Owner".localized,
-                detail: ownerDescription
-            ) {
-                TextField(ownerPlaceholder, text: $draft.owner)
-            }
-
-            Divider()
-
-            HostConfigurationField(
                 "Repo".localized,
-                detail: "A repository used to store uploaded images.".localized
+                detail: "The repository that stores uploaded images.".localized
             ) {
-                TextField("e.g. images", text: $draft.repo)
+                GithubRepoDropdown(
+                    currentOwner: draft.owner,
+                    currentRepo: draft.repo,
+                    token: draft.token,
+                    model: repositorySelection
+                ) { repository in
+                    repositorySelection.clearBranches()
+                    draft.owner = repository.owner
+                    draft.repo = repository.name
+                    draft.branch = repository.defaultBranch
+                }
             }
 
             Divider()
@@ -142,100 +172,47 @@ struct HostConfigurationView: View {
                 "Branch".localized,
                 detail: "The branch that receives uploaded files.".localized
             ) {
-                TextField("main", text: $draft.branch)
-            }
-
-            Divider()
-
-            HostConfigurationField(
-                "Token".localized,
-                detail: "Stored securely in Keychain. Grant only the repository permissions PicFerry needs.".localized
-            ) {
-                HStack(spacing: 8) {
-                    if revealsToken {
-                        TextField(tokenPlaceholder, text: $draft.token)
-                    } else {
-                        SecureField(tokenPlaceholder, text: $draft.token)
-                    }
-
-                    Button(
-                        revealsToken ? "Hide token".localized : "Show token".localized,
-                        systemImage: revealsToken ? "eye.slash" : "eye",
-                        action: toggleTokenVisibility
-                    )
-                    .labelStyle(.iconOnly)
+                GithubBranchDropdown(
+                    currentBranch: draft.branch,
+                    token: draft.token,
+                    owner: draft.owner,
+                    repo: draft.repo,
+                    model: repositorySelection
+                ) { branch in
+                    draft.branch = branch
                 }
             }
 
             Divider()
 
             HostConfigurationField(
-                "Domain".localized,
-                detail: "Optional. Use a custom CDN or raw-file domain for generated links.".localized
-            ) {
-                TextField("https://cdn.example.com", text: $draft.domain)
-            }
-
-            Divider()
-
-            HostConfigurationField(
                 "Save Key".localized,
-                detail: "Leave empty to use PicFerry/{filename}{.suffix}. Date and random variables are supported.".localized
+                detail: "Leave empty to use GitPic/{filename}{.suffix}. Date and random variables are supported.".localized
             ) {
-                TextField("PicFerry/{filename}{.suffix}", text: $draft.saveKeyPath)
+                TextField("GitPic/{filename}{.suffix}", text: $draft.saveKeyPath)
+                    .textFieldStyle(.plain)
+                    .padding(.horizontal, HostPreferencesMetrics.inputHorizontalInset)
+                    .frame(minHeight: HostPreferencesMetrics.inputHeight)
+                    .background(
+                        Color(nsColor: .textBackgroundColor),
+                        in: RoundedRectangle(cornerRadius: HostPreferencesMetrics.inputCornerRadius)
+                    )
+                    .overlay {
+                        RoundedRectangle(cornerRadius: HostPreferencesMetrics.inputCornerRadius)
+                            .stroke(.quaternary, lineWidth: 1)
+                    }
             }
         }
-        .hostPanelStyle()
+        .padding(HostPreferencesMetrics.panelInset)
+        .preferencesCard()
     }
 
-    private var usageDescription: String {
-        switch host.type {
-        case .github:
-            "Create a fine-grained GitHub token with access to the target repository and permission to write repository contents.".localized
-        case .gitee:
-            "Create a Gitee personal access token with permission to write files to the target repository.".localized
-        }
-    }
-
-    private var ownerDescription: String {
-        switch host.type {
-        case .github:
-            "The GitHub user or organization that owns the repository.".localized
-        case .gitee:
-            "The Gitee user or organization that owns the repository.".localized
-        }
-    }
-
-    private var ownerPlaceholder: String {
-        switch host.type {
-        case .github:
-            "e.g. octocat"
-        case .gitee:
-            "e.g. gitee-user"
-        }
-    }
-
-    private var tokenPlaceholder: String {
-        switch host.type {
-        case .github:
-            "GitHub token".localized
-        case .gitee:
-            "Gitee token".localized
-        }
-    }
-
-    private func toggleTokenVisibility() {
-        revealsToken.toggle()
-    }
-}
-
-private extension View {
-    func hostPanelStyle() -> some View {
-        padding(HostPreferencesMetrics.panelInset)
-            .background(Color(nsColor: .controlBackgroundColor).opacity(0.72), in: RoundedRectangle(cornerRadius: HostPreferencesMetrics.panelRadius))
-            .overlay {
-                RoundedRectangle(cornerRadius: HostPreferencesMetrics.panelRadius)
-                    .stroke(Color(nsColor: .separatorColor).opacity(0.28), lineWidth: 1)
-            }
+    private func signOut() {
+        guard model.signOut(hostID: host.id) else { return }
+        repositorySelection.reset()
+        draft.token = ""
+        draft.owner = ""
+        draft.repo = ""
+        draft.branch = ""
     }
 }

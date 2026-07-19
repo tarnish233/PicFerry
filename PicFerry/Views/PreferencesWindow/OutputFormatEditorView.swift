@@ -1,6 +1,6 @@
 //
 //  OutputFormatEditorView.swift
-//  PicFerry
+//  GitPic
 //
 //  Native SwiftUI output-format editor.
 //
@@ -107,14 +107,7 @@ struct OutputFormatEditorView: View {
                 .defaultScrollAnchor(.top)
                 .frame(height: listHeight)
             }
-            .background(
-                Color(nsColor: .controlBackgroundColor).opacity(0.72),
-                in: RoundedRectangle(cornerRadius: 13, style: .continuous)
-            )
-            .overlay {
-                RoundedRectangle(cornerRadius: 13, style: .continuous)
-                    .stroke(Color(nsColor: .separatorColor).opacity(0.25), lineWidth: 1)
-            }
+            .preferencesCard()
 
             HStack {
                 Spacer()

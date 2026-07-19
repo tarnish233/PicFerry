@@ -1,6 +1,6 @@
 //
 //  UpdateChecker.swift
-//  PicFerry
+//  GitPic
 //
 //  检查更新：从 GitHub Releases 获取最新版本并与当前版本比较。
 //  Check for updates: fetch the latest release from GitHub and compare it
@@ -51,7 +51,7 @@ final class UpdateChecker {
     static let shared = UpdateChecker()
 
     /// GitHub 仓库标识 / GitHub repository slug.
-    private let repositorySlug = "tarnish233/PicFerry"
+    private let repositorySlug = "tarnish233/GitPic"
 
     /// 最新 Release 的 API 地址 / Latest-release API endpoint.
     private var latestReleaseAPI: String {

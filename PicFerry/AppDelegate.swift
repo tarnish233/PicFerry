@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/6/7.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -169,15 +169,15 @@ extension AppDelegate {
 
     private func showDefaultStatusBarIcon() {
         guard let button = statusItem?.button else { return }
-        let icon = statusBarSymbol(named: "arrow.up.square", description: "PicFerry")
-            ?? statusBarSymbol(named: "arrow.up", description: "PicFerry")
+        let icon = statusBarSymbol(named: "arrow.up.square", description: "GitPic")
+            ?? statusBarSymbol(named: "arrow.up", description: "GitPic")
             ?? NSImage(named: "statusIcon")
         icon?.isTemplate = true
         button.image = icon
         button.imagePosition = .imageOnly
         button.imageScaling = .scaleProportionallyDown
-        button.toolTip = "PicFerry"
-        button.setAccessibilityLabel("PicFerry")
+        button.toolTip = "GitPic"
+        button.setAccessibilityLabel("GitPic")
     }
 
     private func statusBarSymbol(named name: String, description: String) -> NSImage? {

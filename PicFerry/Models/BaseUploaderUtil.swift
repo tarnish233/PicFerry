@@ -1,6 +1,6 @@
 //
 //  BaseUploaderUtil.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by Svend Jin on 2019/8/8.
 //  Copyright © 2019 Svend Jin. All rights reserved.
@@ -101,7 +101,7 @@ final class BaseUploaderUtil {
         return "\(random).\(fileExtension)"
     }
     
-    static let _defaultSaveKeyPath: String = "PicFerry/{filename}{.suffix}"
+    static let _defaultSaveKeyPath: String = "GitPic/{filename}{.suffix}"
     
     /// 格式化文件保存路径为完整的路径
     /// - Parameters:

@@ -14,11 +14,17 @@
 		F10000052F00000000000001 /* OutputFormatEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000062F00000000000001 /* OutputFormatEditorView.swift */; };
 		F30000012F00000000000001 /* HostPreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000022F00000000000001 /* HostPreferencesModel.swift */; };
 		F30000032F00000000000001 /* HostPreferencesMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000042F00000000000001 /* HostPreferencesMetrics.swift */; };
-		F30000052F00000000000001 /* HostSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000062F00000000000001 /* HostSidebarView.swift */; };
-		F30000072F00000000000001 /* HostProviderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000082F00000000000001 /* HostProviderPickerView.swift */; };
 		F30000092F00000000000001 /* HostEditorDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000A2F00000000000001 /* HostEditorDraft.swift */; };
 		F300000B2F00000000000001 /* HostConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000C2F00000000000001 /* HostConfigurationField.swift */; };
 		F300000D2F00000000000001 /* HostConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300000E2F00000000000001 /* HostConfigurationView.swift */; };
+		F20000222F00000000000001 /* GithubSignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000232F00000000000001 /* GithubSignInModel.swift */; };
+		F20000242F00000000000001 /* GithubSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000252F00000000000001 /* GithubSignInView.swift */; };
+		F20000262F00000000000001 /* GithubRepositorySelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000272F00000000000001 /* GithubRepositorySelectionModel.swift */; };
+		F20000282F00000000000001 /* GithubRepoDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000292F00000000000001 /* GithubRepoDropdown.swift */; };
+		F200002A2F00000000000001 /* GithubBranchDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200002B2F00000000000001 /* GithubBranchDropdown.swift */; };
+		F200002C2F00000000000001 /* GithubSelectionFieldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200002D2F00000000000001 /* GithubSelectionFieldLabel.swift */; };
+		F200002E2F00000000000001 /* PreferencesStyleMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200002F2F00000000000001 /* PreferencesStyleMetrics.swift */; };
+		F20000302F00000000000001 /* PreferencesCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000312F00000000000001 /* PreferencesCardModifier.swift */; };
 		F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30000102F00000000000001 /* PreferencesNavigationModel.swift */; };
 		F20000012F00000000000001 /* HostCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000022F00000000000001 /* HostCredentialStore.swift */; };
 		F20000102F00000000000001 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000112F00000000000001 /* UpdateChecker.swift */; };
@@ -32,9 +38,6 @@
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
-		1646B80622C79337009271DF /* GiteeUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80422C79325009271DF /* GiteeUploader.swift */; };
-		1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80522C79325009271DF /* GiteeHostConfig.swift */; };
-		1646B80822C79349009271DF /* GiteeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80322C79325009271DF /* GiteeUtil.swift */; };
 		164745F022B65FE900F9575D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
 		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
@@ -55,6 +58,7 @@
 		167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEA22C76F5000B03357 /* GithubUploader.swift */; };
 		167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */; };
 		167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEE22C7722200B03357 /* GithubUtil.swift */; };
+		F20000202F00000000000001 /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000212F00000000000001 /* GithubOAuth.swift */; };
 		169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F074322AF7A3D008E8525 /* StatusMenuController.swift */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16B4314625BC8D2F00651BE0 /* ScreenshotAuthorizationHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4314525BC8D2F00651BE0 /* ScreenshotAuthorizationHelpViewController.swift */; };
@@ -77,7 +81,7 @@
 		964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 964198B52729A6BA0001AB97 /* SwiftyJSON */; };
 		964198C02729A7E30001AB97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 964198BF2729A7E30001AB97 /* Alamofire */; };
 		966BF3592E89402400BE9EC7 /* PasteboardType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BF3582E89402400BE9EC7 /* PasteboardType+Extension.swift */; };
-		96767C02266C8AEB00867727 /* PicFerry.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96767C01266C8AEB00867727 /* PicFerry.sdef */; };
+		96767C02266C8AEB00867727 /* GitPic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96767C01266C8AEB00867727 /* GitPic.sdef */; };
 		96767C09266CABC800867727 /* AppleScriptCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96767C08266CABC800867727 /* AppleScriptCommand.swift */; };
 		96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633F525AEC3C6005514EB /* DatabaseViewController.swift */; };
 		96FD4E122E89139F001D2E32 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 96FD4E112E89139F001D2E32 /* KeyboardShortcuts */; };
@@ -110,11 +114,17 @@
 		F10000062F00000000000001 /* OutputFormatEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFormatEditorView.swift; sourceTree = "<group>"; };
 		F30000022F00000000000001 /* HostPreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesModel.swift; sourceTree = "<group>"; };
 		F30000042F00000000000001 /* HostPreferencesMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesMetrics.swift; sourceTree = "<group>"; };
-		F30000062F00000000000001 /* HostSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSidebarView.swift; sourceTree = "<group>"; };
-		F30000082F00000000000001 /* HostProviderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProviderPickerView.swift; sourceTree = "<group>"; };
 		F300000A2F00000000000001 /* HostEditorDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEditorDraft.swift; sourceTree = "<group>"; };
 		F300000C2F00000000000001 /* HostConfigurationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfigurationField.swift; sourceTree = "<group>"; };
 		F300000E2F00000000000001 /* HostConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfigurationView.swift; sourceTree = "<group>"; };
+		F20000232F00000000000001 /* GithubSignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSignInModel.swift; sourceTree = "<group>"; };
+		F20000252F00000000000001 /* GithubSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSignInView.swift; sourceTree = "<group>"; };
+		F20000272F00000000000001 /* GithubRepositorySelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositorySelectionModel.swift; sourceTree = "<group>"; };
+		F20000292F00000000000001 /* GithubRepoDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoDropdown.swift; sourceTree = "<group>"; };
+		F200002B2F00000000000001 /* GithubBranchDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubBranchDropdown.swift; sourceTree = "<group>"; };
+		F200002D2F00000000000001 /* GithubSelectionFieldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSelectionFieldLabel.swift; sourceTree = "<group>"; };
+		F200002F2F00000000000001 /* PreferencesStyleMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyleMetrics.swift; sourceTree = "<group>"; };
+		F20000312F00000000000001 /* PreferencesCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesCardModifier.swift; sourceTree = "<group>"; };
 		F30000102F00000000000001 /* PreferencesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNavigationModel.swift; sourceTree = "<group>"; };
 		F20000022F00000000000001 /* HostCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCredentialStore.swift; sourceTree = "<group>"; };
 		F20000112F00000000000001 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
@@ -130,9 +140,6 @@
 		163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+VerticallyCentered.swift"; sourceTree = "<group>"; };
 		163632F022B274B400805E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		163632F222B2751D00805E7F /* BoolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolType.swift; sourceTree = "<group>"; };
-		1646B80322C79325009271DF /* GiteeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeUtil.swift; sourceTree = "<group>"; };
-		1646B80422C79325009271DF /* GiteeUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeUploader.swift; sourceTree = "<group>"; };
-		1646B80522C79325009271DF /* GiteeHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeHostConfig.swift; sourceTree = "<group>"; };
 		164745EF22B65FE900F9575D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1647474222B66ACE00F9575D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -150,18 +157,19 @@
 		167DDBEA22C76F5000B03357 /* GithubUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUploader.swift; sourceTree = "<group>"; };
 		167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubHostConfig.swift; sourceTree = "<group>"; };
 		167DDBEE22C7722200B03357 /* GithubUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUtil.swift; sourceTree = "<group>"; };
+		F20000212F00000000000001 /* GithubOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
 		169F074322AF7A3D008E8525 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
-		16A0480325B18300000F1323 /* PicFerryDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicFerryDebug.entitlements; sourceTree = "<group>"; };
+		16A0480325B18300000F1323 /* GitPicDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitPicDebug.entitlements; sourceTree = "<group>"; };
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC6022AA375800813706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16A6DC6122AA375800813706 /* PicFerry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicFerry.entitlements; sourceTree = "<group>"; };
+		16A6DC6122AA375800813706 /* GitPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitPic.entitlements; sourceTree = "<group>"; };
 		16B4314525BC8D2F00651BE0 /* ScreenshotAuthorizationHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotAuthorizationHelpViewController.swift; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CD34F923BC8966005B52F2 /* Swime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swime.swift; sourceTree = "<group>"; };
 		16CD34FA23BC8966005B52F2 /* MimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
 		16E3B57825B5341F00D4234F /* OutputFormatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFormatModel.swift; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
-		16EC9A0222ABBBB4001B6C89 /* PicFerry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicFerry.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16EC9A0222ABBBB4001B6C89 /* GitPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F04EDE23BCC45F00CCA2FE /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		16F04EE023BCC45F00CCA2FE /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		16F04EE123BCC45F00CCA2FE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -176,7 +184,7 @@
 		962559B22E89094300170641 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Database.xcstrings; sourceTree = "<group>"; };
 		962559B62E89094300170641 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		966BF3582E89402400BE9EC7 /* PasteboardType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardType+Extension.swift"; sourceTree = "<group>"; };
-		96767C01266C8AEB00867727 /* PicFerry.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PicFerry.sdef; sourceTree = "<group>"; };
+		96767C01266C8AEB00867727 /* GitPic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GitPic.sdef; sourceTree = "<group>"; };
 		96767C08266CABC800867727 /* AppleScriptCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptCommand.swift; sourceTree = "<group>"; };
 		96B6C3F725AD89F200B1A584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96F633F525AEC3C6005514EB /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
@@ -211,11 +219,17 @@
 				F10000042F00000000000001 /* ModernHostPreferencesView.swift */,
 				F30000022F00000000000001 /* HostPreferencesModel.swift */,
 				F30000042F00000000000001 /* HostPreferencesMetrics.swift */,
-				F30000062F00000000000001 /* HostSidebarView.swift */,
-				F30000082F00000000000001 /* HostProviderPickerView.swift */,
 				F300000A2F00000000000001 /* HostEditorDraft.swift */,
 				F300000C2F00000000000001 /* HostConfigurationField.swift */,
 				F300000E2F00000000000001 /* HostConfigurationView.swift */,
+				F20000232F00000000000001 /* GithubSignInModel.swift */,
+				F20000252F00000000000001 /* GithubSignInView.swift */,
+				F20000272F00000000000001 /* GithubRepositorySelectionModel.swift */,
+				F20000292F00000000000001 /* GithubRepoDropdown.swift */,
+				F200002B2F00000000000001 /* GithubBranchDropdown.swift */,
+				F200002D2F00000000000001 /* GithubSelectionFieldLabel.swift */,
+				F200002F2F00000000000001 /* PreferencesStyleMetrics.swift */,
+				F20000312F00000000000001 /* PreferencesCardModifier.swift */,
 				F30000102F00000000000001 /* PreferencesNavigationModel.swift */,
 				F10000062F00000000000001 /* OutputFormatEditorView.swift */,
 			);
@@ -274,16 +288,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		1646B80222C7931E009271DF /* Gitee */ = {
-			isa = PBXGroup;
-			children = (
-				1646B80422C79325009271DF /* GiteeUploader.swift */,
-				1646B80522C79325009271DF /* GiteeHostConfig.swift */,
-				1646B80322C79325009271DF /* GiteeUtil.swift */,
-			);
-			path = Gitee;
-			sourceTree = "<group>";
-		};
 		16493940285EC6AF007278DA /* Logger */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +314,6 @@
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
-				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
 			);
 			path = Models;
@@ -338,6 +341,7 @@
 				167DDBEA22C76F5000B03357 /* GithubUploader.swift */,
 				167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */,
 				167DDBEE22C7722200B03357 /* GithubUtil.swift */,
+				F20000212F00000000000001 /* GithubOAuth.swift */,
 			);
 			path = Github;
 			sourceTree = "<group>";
@@ -346,13 +350,13 @@
 			isa = PBXGroup;
 			children = (
 				16152F982E8A20FE003D0768 /* libs */,
-				16A6DC5622AA375700813706 /* PicFerry */,
+				16A6DC5622AA375700813706 /* GitPic */,
 				F517F004DFA2ACE018535745 /* Frameworks */,
-				16EC9A0222ABBBB4001B6C89 /* PicFerry.app */,
+				16EC9A0222ABBBB4001B6C89 /* GitPic.app */,
 			);
 			sourceTree = "<group>";
 		};
-		16A6DC5622AA375700813706 /* PicFerry */ = {
+		16A6DC5622AA375700813706 /* GitPic */ = {
 			isa = PBXGroup;
 			children = (
 				16493940285EC6AF007278DA /* Logger */,
@@ -380,8 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				16A6DC6022AA375800813706 /* Info.plist */,
-				16A6DC6122AA375800813706 /* PicFerry.entitlements */,
-				16A0480325B18300000F1323 /* PicFerryDebug.entitlements */,
+				16A6DC6122AA375800813706 /* GitPic.entitlements */,
+				16A0480325B18300000F1323 /* GitPicDebug.entitlements */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -445,7 +449,7 @@
 		96767C3A266CBC2000867727 /* AppleScript */ = {
 			isa = PBXGroup;
 			children = (
-				96767C01266C8AEB00867727 /* PicFerry.sdef */,
+				96767C01266C8AEB00867727 /* GitPic.sdef */,
 				96767C08266CABC800867727 /* AppleScriptCommand.swift */,
 			);
 			path = AppleScript;
@@ -471,9 +475,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		16A6DC5322AA375700813706 /* PicFerry */ = {
+		16A6DC5322AA375700813706 /* GitPic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 16A6DC6422AA375800813706 /* Build configuration list for PBXNativeTarget "PicFerry" */;
+			buildConfigurationList = 16A6DC6422AA375800813706 /* Build configuration list for PBXNativeTarget "GitPic" */;
 			buildPhases = (
 				16A6DC5022AA375700813706 /* Sources */,
 				16A6DC5122AA375700813706 /* Frameworks */,
@@ -484,7 +488,7 @@
 			);
 			dependencies = (
 			);
-			name = PicFerry;
+			name = GitPic;
 			packageProductDependencies = (
 				964198B52729A6BA0001AB97 /* SwiftyJSON */,
 				964198BF2729A7E30001AB97 /* Alamofire */,
@@ -495,8 +499,8 @@
 				96FD4E112E89139F001D2E32 /* KeyboardShortcuts */,
 				96FD4E152E891909001D2E32 /* LaunchAtLogin */,
 			);
-			productName = PicFerry;
-			productReference = 16EC9A0222ABBBB4001B6C89 /* PicFerry.app */;
+			productName = GitPic;
+			productReference = 16EC9A0222ABBBB4001B6C89 /* GitPic.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -524,7 +528,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 16A6DC4F22AA375700813706 /* Build configuration list for PBXProject "PicFerry" */;
+			buildConfigurationList = 16A6DC4F22AA375700813706 /* Build configuration list for PBXProject "GitPic" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -533,13 +537,6 @@
 				Base,
 				"zh-Hans",
 				"zh-Hant",
-				fr,
-				de,
-				it,
-				ja,
-				ko,
-				ru,
-				es,
 			);
 			mainGroup = 16A6DC4B22AA375700813706;
 			packageReferences = (
@@ -555,7 +552,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				16A6DC5322AA375700813706 /* PicFerry */,
+				16A6DC5322AA375700813706 /* GitPic */,
 			);
 		};
 /* End PBXProject section */
@@ -567,7 +564,7 @@
 			files = (
 				1648A216238E742600B99B9D /* Main.storyboard in Resources */,
 				962559AF2E89094300170641 /* Localizable.xcstrings in Resources */,
-				96767C02266C8AEB00867727 /* PicFerry.sdef in Resources */,
+				96767C02266C8AEB00867727 /* GitPic.sdef in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,11 +583,17 @@
 				F10000032F00000000000001 /* ModernHostPreferencesView.swift in Sources */,
 				F30000012F00000000000001 /* HostPreferencesModel.swift in Sources */,
 				F30000032F00000000000001 /* HostPreferencesMetrics.swift in Sources */,
-				F30000052F00000000000001 /* HostSidebarView.swift in Sources */,
-				F30000072F00000000000001 /* HostProviderPickerView.swift in Sources */,
 				F30000092F00000000000001 /* HostEditorDraft.swift in Sources */,
 				F300000B2F00000000000001 /* HostConfigurationField.swift in Sources */,
 				F300000D2F00000000000001 /* HostConfigurationView.swift in Sources */,
+				F20000222F00000000000001 /* GithubSignInModel.swift in Sources */,
+				F20000242F00000000000001 /* GithubSignInView.swift in Sources */,
+				F20000262F00000000000001 /* GithubRepositorySelectionModel.swift in Sources */,
+				F20000282F00000000000001 /* GithubRepoDropdown.swift in Sources */,
+				F200002A2F00000000000001 /* GithubBranchDropdown.swift in Sources */,
+				F200002C2F00000000000001 /* GithubSelectionFieldLabel.swift in Sources */,
+				F200002E2F00000000000001 /* PreferencesStyleMetrics.swift in Sources */,
+				F20000302F00000000000001 /* PreferencesCardModifier.swift in Sources */,
 				F300000F2F00000000000001 /* PreferencesNavigationModel.swift in Sources */,
 				F10000052F00000000000001 /* OutputFormatEditorView.swift in Sources */,
 				F20000012F00000000000001 /* HostCredentialStore.swift in Sources */,
@@ -606,7 +609,6 @@
 				16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
-				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
 				966BF3592E89402400BE9EC7 /* PasteboardType+Extension.swift in Sources */,
 				16E3B57925B5342000D4234F /* OutputFormatModel.swift in Sources */,
 				96FD4E142E89147A001D2E32 /* KeyboardShortcuts+Name.swift in Sources */,
@@ -623,13 +625,11 @@
 				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				16493942285EC6CE007278DA /* Logger.swift in Sources */,
-				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
 				160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */,
 				16F04EE823BCC45F00CCA2FE /* Cli.swift in Sources */,
-				1646B80622C79337009271DF /* GiteeUploader.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfo+Extension.swift in Sources */,
 				16F04EEC23BCC4B200CCA2FE /* FileManager+Extension.swift in Sources */,
 				96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */,
@@ -641,6 +641,7 @@
 				1629470B25B672CF00CCB3C8 /* DiskPermissionManager.swift in Sources */,
 				16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
+				F20000202F00000000000001 /* GithubOAuth.swift in Sources */,
 				16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,7 +804,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/PicFerryDebug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/GitPicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -827,17 +828,17 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tarnish233.PicFerry;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tarnish233.gitpic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/PicFerry-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/GitPic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -850,7 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/PicFerry.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "PicFerry/Supporting Files/GitPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -874,17 +875,17 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SRCROOT)/libs/libminipng-arm64.a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tarnish233.PicFerry;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tarnish233.gitpic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/PicFerry-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicFerry/GitPic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -892,7 +893,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16A6DC4F22AA375700813706 /* Build configuration list for PBXProject "PicFerry" */ = {
+		16A6DC4F22AA375700813706 /* Build configuration list for PBXProject "GitPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16A6DC6222AA375800813706 /* Debug */,
@@ -901,7 +902,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		16A6DC6422AA375800813706 /* Build configuration list for PBXNativeTarget "PicFerry" */ = {
+		16A6DC6422AA375800813706 /* Build configuration list for PBXNativeTarget "GitPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16A6DC6522AA375800813706 /* Debug */,

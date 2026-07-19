@@ -1,6 +1,6 @@
 //
 //  NSImageExtension.swift
-//  PicFerry
+//  GitPic
 //
 //  Created by 侯猛 on 2019/10/24.
 //  Copyright © 2019 Svend Jin. All rights reserved.
